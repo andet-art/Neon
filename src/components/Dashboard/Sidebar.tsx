@@ -1,31 +1,37 @@
-import { NavLink } from "react-router-dom";
+// src/components/Dashboard/Sidebar.tsx
 
-const Sidebar = () => {
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Sidebar.css"; // optional, for custom styles
+
+const Sidebar: React.FC = () => {
   const links = [
-    { name: "Home", path: "/" },
+    { name: "Dashboard", path: "/dashboard" },
     { name: "Categories", path: "/categories" },
     { name: "About Us", path: "/about" },
     { name: "Service", path: "/service" },
     { name: "Contact", path: "/contact" },
     { name: "Shop", path: "/shop" },
     { name: "Cart", path: "/cart" },
-    
+    { name: "Offers", path: "/offers" },
   ];
 
   return (
-    <div className="sidebar">
-      {links.map((link) => (
-        <NavLink
-          key={link.name}
-          to={link.path}
-          className={({ isActive }) =>
-            isActive ? "sidebar-link active" : "sidebar-link"
-          }
-        >
-          {link.name}
-        </NavLink>
-      ))}
-    </div>
+    <aside className="sidebar">
+      <nav>
+        {links.map((link) => (
+          <NavLink
+            key={link.name}
+            to={link.path}
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+          >
+            {link.name}
+          </NavLink>
+        ))}
+      </nav>
+    </aside>
   );
 };
 
