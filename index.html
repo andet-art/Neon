@@ -27,33 +27,72 @@
   </header>
 
   <!-- Slider Section -->
-  <section class="slider">
-    <div class="slide">
-      <img src="/slide1.webp" alt="Slide 1">
+  <div class="slider-container">
+    <div class="slider-wrapper">
+      <div class="slider">
+        <div class="slide">
+          <img src="/slide1.webp" alt="Slide 1">
+        </div>
+        <div class="slide">
+          <img src="/slide2.jpg" alt="Slide 2">
+        </div>
+        <div class="slide">
+          <img src="/slide3.png" alt="Slide 3">
+        </div>
+      </div>
     </div>
-    <div class="slide">
-      <img src="/slide2.jpg" alt="Slide 2">
-    </div>
-    <div class="slide">
-      <img src="/slide3.png" alt="Slide 3">
-    </div>
-  </section>
-  
-  
-  
-  
-  
-  
+    <button class="slider-btn prev-btn">&lt;</button>
+    <button class="slider-btn next-btn">&gt;</button>
+  </div>
+
+
+
+
+
+
 
   <section class="hero">
     Portfolio
   </section>
 
   <section class="portfolio-images">
-    <img src="https://via.placeholder.com/400x300?text=Project+1" alt="Project 1">
-    <img src="https://via.placeholder.com/400x300?text=Project+2" alt="Project 2">
-    <img src="https://via.placeholder.com/400x300?text=Project+3" alt="Project 3">
+    <img src="/public/p1.jpg" alt="Project 1">
+    <img src="/public/p2.jpg" alt="Project 2">
+    <img src="/public/p3.jpg" alt="Project 3">
   </section>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.querySelector('.slider');
+      const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      let currentIndex = 0;
+
+      // Set initial position
+      updateSliderPosition();
+
+      // Event listeners for buttons
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+        updateSliderPosition();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        updateSliderPosition();
+      });
+
+      // Auto slide every 5 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        updateSliderPosition();
+      }, 5000);
+
+      function updateSliderPosition() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+    });
+  </script>
 </body>
 </html>
