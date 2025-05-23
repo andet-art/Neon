@@ -10,7 +10,6 @@ import About from "./components/About/About";
 import Service from "./components/Service/Service";
 import Contact from "./components/Contact/Contact";
 import Shop from "./components/Shop/Shop";
-import Carts from "./components/Cart/Cart";
 import Cart from "./components/Cart/Cart";
 import Offers from "./components/Offers/Offers";
 
