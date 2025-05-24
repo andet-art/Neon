@@ -1,6 +1,6 @@
 // src/components/Dashboard/Layout.tsx
 
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { Box, Toolbar, CssBaseline } from '@mui/material';
 import Header from './Header';      // Assuming you have this component
 import Sidebar from './Sidebar';    // Assuming you want Sidebar here as well
