@@ -1,0 +1,53 @@
+/* src/components/Layout.css */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.topbar nav a {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.topbar nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Simple fake carousel */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  background-color: #f0f0f0;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 250px;
+  background-color: #bbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  scroll-snap-align: start;
+}
+
+/* Page content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #fafafa;
+}
