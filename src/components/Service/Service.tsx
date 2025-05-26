@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Typography, Paper } from '@mui/material';
 
 const services = [
   {
@@ -29,20 +30,53 @@ const services = [
 
 const Service = () => {
   return (
-    <div className="max-w-5xl mx-auto p-8">
-      <h1 className="text-4xl font-bold text-purple-700 mb-8 text-center">Our Services</h1>
-      <div className="grid gap-8 sm:grid-cols-2">
+    <Box 
+      sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: '#f5f5f5',
+        flex: 1,
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <Typography variant="h3" component="h1" gutterBottom align="center" color="primary">
+        Our Services
+      </Typography>
+      <Box 
+        sx={{ 
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 4,
+          flex: 1,
+          width: '100%'
+        }}
+      >
         {services.map(({ id, title, description }) => (
-          <div
+          <Paper
             key={id}
-            className="p-6 border border-purple-300 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+            sx={{
+              p: 3,
+              height: '100%',
+              bgcolor: 'white',
+              borderRadius: 2,
+              boxShadow: 1,
+              transition: 'box-shadow 0.3s',
+              '&:hover': {
+                boxShadow: 4,
+              },
+            }}
           >
-            <h2 className="text-2xl font-semibold text-purple-800 mb-2">{title}</h2>
-            <p className="text-gray-700">{description}</p>
-          </div>
+            <Typography variant="h5" component="h2" gutterBottom color="primary.dark">
+              {title}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {description}
+            </Typography>
+          </Paper>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

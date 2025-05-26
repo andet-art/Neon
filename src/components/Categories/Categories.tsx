@@ -1,36 +1,66 @@
-// src/pages/Categories.tsx
-import React from "react";
+import React from 'react';
+import { Box, Typography, Paper } from '@mui/material';
 
-type Category = {
-  name: string;
-  description: string;
-};
-
-const categories: Category[] = [
-  { name: "Electronics", description: "Phones, laptops, gadgets & more." },
-  { name: "Clothing", description: "Fashionable wear for all seasons." },
-  { name: "Home & Kitchen", description: "Essentials for your living space." },
-  { name: "Books", description: "Explore fiction, non-fiction, and more." },
-  { name: "Sports", description: "Gear and equipment for every sport." },
-  { name: "Toys", description: "Fun and learning for all ages." },
+const categories = [
+  { id: 1, name: 'Category 1', description: 'Description for category 1' },
+  { id: 2, name: 'Category 2', description: 'Description for category 2' },
+  { id: 3, name: 'Category 3', description: 'Description for category 3' },
 ];
 
 const Categories: React.FC = () => {
   return (
-    <div className="p-8 ml-56">
-      <h1 className="text-3xl font-bold mb-6">Categories</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categories.map((cat, index) => (
-          <div
-            key={index}
-            className="bg-white border rounded-2xl shadow p-5 hover:shadow-lg transition duration-300"
-          >
-            <div className="text-2xl font-semibold mb-2">{cat.name}</div>
-            <p className="text-gray-600">{cat.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Box 
+      sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: '#f5f5f5',
+        flex: 1,
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <Box sx={{ p: 3, flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <Typography variant="h4" gutterBottom>
+          Categories
+        </Typography>
+        
+        <Box 
+          sx={{ 
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 3,
+            flex: 1,
+            width: '100%'
+          }}
+        >
+          {categories.map((category) => (
+            <Paper
+              key={category.id}
+              sx={{
+                p: 3,
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s, box-shadow 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 3,
+                },
+                bgcolor: 'white',
+                borderRadius: 2
+              }}
+            >
+              <Typography variant="h6" gutterBottom>
+                {category.name}
+              </Typography>
+              <Typography color="textSecondary">
+                {category.description}
+              </Typography>
+            </Paper>
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

@@ -1,100 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neon Systems - Portfolio</title>
-  <link rel="stylesheet" href="index.css">
-</head>
-<body>
-
-  <header>
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/VisualEditor_-_Icon_-_Align_left.svg" alt="Neon Logo">
-      <span class="brand-name">Neon Systems</span>
-    </div>
-    <nav>
-      <button class="nav-btn" onclick="location.href='#home'">HOME</button>
-      <button class="nav-btn" onclick="location.href='#about'">ABOUT</button>
-      <button class="nav-btn" onclick="location.href='#shop'">SHOP</button>
-      <button class="nav-btn" onclick="location.href='#categories'">CATEGORIES</button>
-      <button class="nav-btn" onclick="location.href='#service'">SERVICE</button>
-      <button class="nav-btn" onclick="location.href='#contact'">CONTACT</button>
-      <button class="nav-btn" onclick="location.href='#cart'">CART</button>
-      <button class="nav-btn" onclick="location.href='#offers'">OFFERS</button>
-    </nav>
-    <div class="profile">
-      <img src="https://i.pravatar.cc/150?img=3" alt="Profile" class="profile-img">
-    </div>
-  </header>
-
-  <!-- Slider Section -->
-  <div class="slider-container">
-    <div class="slider-wrapper">
-      <div class="slider">
-        <div class="slide">
-          <img src="slide1.webp" alt="Slide 1">
-        </div>
-        <div class="slide">
-          <img src="slide2.jpg" alt="Slide 2">
-        </div>
-        <div class="slide">
-          <img src="slide3.png" alt="Slide 3">
-        </div>
-      </div>
-    </div>
-    <button class="slider-btn prev-btn">&lt;</button>
-    <button class="slider-btn next-btn">&gt;</button>
-  </div>
-
-
-
-
-
-
-
-  <section class="hero">
-    Portfolio
-  </section>
-
-  <section class="portfolio-images">
-    <img src="slide1.webp" alt="Project 1">
-    <img src="slide2.jpg" alt="Project 2">
-    <img src="slide3.png" alt="Project 3">
-  </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const slider = document.querySelector('.slider');
-      const slides = document.querySelectorAll('.slide');
-      const prevBtn = document.querySelector('.prev-btn');
-      const nextBtn = document.querySelector('.next-btn');
-      let currentIndex = 0;
-
-      // Set initial position
-      updateSliderPosition();
-
-      // Event listeners for buttons
-      prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-        updateSliderPosition();
-      });
-
-      nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-        updateSliderPosition();
-      });
-
-      // Auto slide every 5 seconds
-      setInterval(() => {
-        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-        updateSliderPosition();
-      }, 5000);
-
-      function updateSliderPosition() {
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-      }
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

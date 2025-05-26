@@ -1,96 +1,93 @@
-import { useState, useEffect, ChangeEvent } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import './Dashboard.css';
+import { images } from '../../assets/images';
 
-type Offer = {
-  id: number;
-  title: string;
-  description: string;
-  featured: boolean;
-};
+const Dashboard: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const slides = [
+    { src: images.slides.slide1, alt: 'Slide 1' },
+    { src: images.slides.slide2, alt: 'Slide 2' },
+    { src: images.slides.slide3, alt: 'Slide 3' }
+  ];
 
-export default function Dashboard() {
-  const [offers, setOffers] = useState<Offer[]>([]);
-  const [form, setForm] = useState({ title: "", description: "" });
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    console.log('Image failed to load:', e.currentTarget.src);
+    e.currentTarget.src = '/vite.svg'; // Fallback to vite logo if image fails to load
+  };
+
+  const handlePrevClick = () => {
+    setCurrentIndex(prev => 
+      prev > 0 ? prev - 1 : slides.length - 1
+    );
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex(prev => 
+      prev < slides.length - 1 ? prev + 1 : 0
+    );
+  };
 
   useEffect(() => {
-    fetchOffers();
+    const interval = setInterval(() => {
+      handleNextClick();
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
-  const fetchOffers = async () => {
-    const res = await axios.get<Offer[]>("/api/get_offers.php");
-    setOffers(res.data);
-  };
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleAddOffer = async () => {
-    await axios.post("/api/add_offer.php", form);
-    setForm({ title: "", description: "" });
-    fetchOffers();
-  };
-
-  const toggleFeatured = async (id: number) => {
-    await axios.post("/api/toggle_featured.php", { id });
-    fetchOffers();
-  };
-
   return (
-    <div className="p-6 max-w-3xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold">Neon Dashboard</h1>
-
-      {/* New Offer Form */}
-      <div className="space-y-4 bg-white p-4 rounded-lg shadow">
-        <h2 className="text-xl font-semibold">Create New Offer</h2>
-        <input
-          type="text"
-          name="title"
-          placeholder="Offer Title"
-          className="w-full border p-2 rounded"
-          value={form.title}
-          onChange={handleChange}
-        />
-        <textarea
-          name="description"
-          placeholder="Offer Description"
-          className="w-full border p-2 rounded"
-          value={form.description}
-          onChange={handleChange}
-        />
-        <button
-          onClick={handleAddOffer}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    <div>
+      <div className="slider-container">
+        <div className="slider-wrapper">
+          <div 
+            className="slider"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {slides.map((slide, index) => (
+              <div key={index} className="slide">
+                <img 
+                  src={slide.src} 
+                  alt={slide.alt} 
+                  onError={handleImageError}
+                  onLoad={() => console.log('Image loaded:', slide.src)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <button 
+          className="slider-btn prev-btn" 
+          onClick={handlePrevClick}
+          aria-label="Previous slide"
         >
-          Add Offer
+          {'<'}
+        </button>
+        <button 
+          className="slider-btn next-btn" 
+          onClick={handleNextClick}
+          aria-label="Next slide"
+        >
+          {'>'}
         </button>
       </div>
 
-      {/* Offers List */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Offers</h2>
-        {offers.map((offer) => (
-          <div
-            key={offer.id}
-            className={`p-4 border rounded-lg ${
-              offer.featured ? "border-green-500" : "border-gray-300"
-            }`}
-          >
-            <h3 className="text-lg font-bold">{offer.title}</h3>
-            <p className="text-gray-700">{offer.description}</p>
-            <button
-              onClick={() => toggleFeatured(offer.id)}
-              className={`mt-2 px-3 py-1 rounded text-sm ${
-                offer.featured
-                  ? "bg-red-500 text-white hover:bg-red-600"
-                  : "bg-green-500 text-white hover:bg-green-600"
-              }`}
-            >
-              {offer.featured ? "Unpick" : "Pick for Main Page"}
-            </button>
-          </div>
+      <section className="hero">
+        Portfolio
+      </section>
+
+      <section className="portfolio-images">
+        {slides.map((slide, index) => (
+          <img 
+            key={`portfolio-${index}`}
+            src={slide.src} 
+            alt={`Project ${index + 1}`}
+            onError={handleImageError}
+            onLoad={() => console.log('Portfolio image loaded:', slide.src)}
+          />
         ))}
-      </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Dashboard;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Box, Typography, Paper, TextField, Button, Alert } from '@mui/material';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -10,72 +11,106 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // For now just mark submitted
     setSubmitted(true);
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-8 text-center text-purple-700">Contact Us</h1>
+    <Box 
+      sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: '#f5f5f5',
+        flex: 1,
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <Typography variant="h3" component="h1" gutterBottom align="center" color="primary">
+        Contact Us
+      </Typography>
 
-      {submitted ? (
-        <p className="text-center text-green-600 text-lg">Thank you for your message! We will get back to you soon.</p>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block mb-2 font-semibold">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="w-full border border-purple-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+      }}>
+        <Paper
+          sx={{
+            p: 4,
+            width: '100%',
+            maxWidth: '600px',
+            bgcolor: 'white',
+            borderRadius: 2,
+            boxShadow: 1
+          }}
+        >
+          {submitted ? (
+            <Alert severity="success" sx={{ mt: 2 }}>
+              Thank you for your message! We will get back to you soon.
+            </Alert>
+          ) : (
+            <Box 
+              component="form" 
+              onSubmit={handleSubmit}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 3
+              }}
+            >
+              <TextField
+                fullWidth
+                label="Name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                variant="outlined"
+              />
 
-          <div>
-            <label htmlFor="email" className="block mb-2 font-semibold">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="w-full border border-purple-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+              <TextField
+                fullWidth
+                label="Email"
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                variant="outlined"
+              />
 
-          <div>
-            <label htmlFor="message" className="block mb-2 font-semibold">
-              Message
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              rows={5}
-              value={form.message}
-              onChange={handleChange}
-              required
-              className="w-full border border-purple-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+              <TextField
+                fullWidth
+                label="Message"
+                name="message"
+                multiline
+                rows={4}
+                value={form.message}
+                onChange={handleChange}
+                required
+                variant="outlined"
+              />
 
-          <button
-            type="submit"
-            className="bg-purple-600 text-white font-semibold px-6 py-3 rounded hover:bg-purple-700 transition"
-          >
-            Send Message
-          </button>
-        </form>
-      )}
-    </div>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="large"
+                sx={{ 
+                  mt: 2,
+                  py: 1.5,
+                  px: 4,
+                  alignSelf: 'flex-start'
+                }}
+              >
+                Send Message
+              </Button>
+            </Box>
+          )}
+        </Paper>
+      </Box>
+    </Box>
   );
 };
 

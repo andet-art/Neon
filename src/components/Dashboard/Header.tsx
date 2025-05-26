@@ -1,101 +1,47 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link as RouterLink } from 'react-router-dom';
-
-const navLinks = [
-  { title: 'Dashboard', path: '/' },
-  { title: 'Services', path: '/services' },
-  { title: 'Cost Control', path: '/cost-control' },
-  { title: 'Settings', path: '/settings' },
-];
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Header.css';
+import { images } from '../../assets/images';
 
 const Header: React.FC = () => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const isActiveLink = ({ isActive }: { isActive: boolean }) => 
+    isActive ? 'nav-btn active' : 'nav-btn';
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    console.log('Image failed to load:', e.currentTarget.src);
+    e.currentTarget.src = '/vite.svg'; // Fallback to vite logo if image fails to load
   };
 
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        {/* App Title */}
-        <Typography
-          variant="h6"
-          component={RouterLink}
-          to="/"
-          sx={{
-            flexGrow: 1,
-            color: 'inherit',
-            textDecoration: 'none',
-            fontWeight: 'bold',
-          }}
-        >
-          MyApp
-        </Typography>
-
-        {/* Desktop nav links */}
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-          {navLinks.map(({ title, path }) => (
-            <Button
-              key={title}
-              component={RouterLink}
-              to={path}
-              color="inherit"
-              sx={{ textTransform: 'none' }}
-            >
-              {title}
-            </Button>
-          ))}
-        </Box>
-
-        {/* Mobile menu button */}
-        <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-          <IconButton
-            size="large"
-            aria-label="navigation menu"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-          >
-            {navLinks.map(({ title, path }) => (
-              <MenuItem
-                key={title}
-                component={RouterLink}
-                to={path}
-                onClick={handleCloseNavMenu}
-              >
-                {title}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
-      </Toolbar>
-    </AppBar>
+    <header>
+      <div className="logo">
+        <img 
+          src={images.logo} 
+          alt="Neon Logo" 
+          onError={handleImageError}
+          onLoad={() => console.log('Logo loaded successfully')}
+        />
+        <span className="brand-name">Neon Dashboard</span>
+      </div>
+      <nav>
+        <NavLink to="/dashboard" end className={isActiveLink}>Dashboard</NavLink>
+        <NavLink to="/dashboard/categories" className={isActiveLink}>Categories</NavLink>
+        <NavLink to="/dashboard/about" className={isActiveLink}>About</NavLink>
+        <NavLink to="/dashboard/service" className={isActiveLink}>Service</NavLink>
+        <NavLink to="/dashboard/contact" className={isActiveLink}>Contact</NavLink>
+        <NavLink to="/dashboard/shop" className={isActiveLink}>Shop</NavLink>
+        <NavLink to="/dashboard/cart" className={isActiveLink}>Cart</NavLink>
+        <NavLink to="/dashboard/offers" className={isActiveLink}>Offers</NavLink>
+      </nav>
+      <div className="profile">
+        <img 
+          src={images.slides.slide1} 
+          alt="Profile" 
+          className="profile-img"
+          onError={handleImageError}
+          onLoad={() => console.log('Profile image loaded successfully')}
+        />
+      </div>
+    </header>
   );
 };
 
