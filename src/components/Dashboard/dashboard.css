@@ -1,0 +1,99 @@
+/* dashboard.css */
+.dashboard-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+}
+
+.dashboard-box {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.offer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.offer-form input,
+.offer-form textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.offer-form button {
+  padding: 0.6rem;
+  font-size: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.offer-form button:hover {
+  background: #0056b3;
+}
+
+.offers-header {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.offer-card {
+  background: #f0f0f0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  position: relative;
+}
+
+.offer-card.featured {
+  background: #fff3cd;
+  border-left: 6px solid #ffc107;
+}
+
+.offer-card button {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pick {
+  background: #28a745;
+  color: white;
+}
+
+.pick:hover {
+  background: #218838;
+}
+
+.unpick {
+  background: #dc3545;
+  color: white;
+}
+
+.unpick:hover {
+  background: #c82333;
+}

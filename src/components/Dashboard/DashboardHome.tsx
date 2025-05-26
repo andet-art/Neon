@@ -1,32 +1,120 @@
-// src/pages/DashboardHome.tsx
-import React from 'react';
+import React, { useState, useEffect, ChangeEvent } from "react";
+import axios from "axios";
+import "./dashboard.css";
 
-const DashboardHome: React.FC = () => {
+type Offer = {
+  id: number;
+  title: string;
+  description: string;
+  featured: boolean;
+};
+
+export default function DashboardHome() {
+  const [offers, setOffers] = useState<Offer[]>([]);
+  const [form, setForm] = useState({ title: "", description: "" });
+
+  useEffect(() => {
+    fetchOffers();
+  }, []);
+
+  const fetchOffers = async () => {
+    try {
+      const res = await axios.get('/api/get_offers.php');
+      console.log("API response:", res.data);
+
+      const data = res.data;
+      const offersArray = Array.isArray(data)
+        ? data
+        : Array.isArray(data.offers)
+        ? data.offers
+        : [];
+
+      setOffers(offersArray);
+    } catch (error) {
+      console.error('Error fetching offers:', error);
+      setOffers([]); // fallback to empty array
+    }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleAddOffer = async () => {
+    try {
+      await axios.post('/api/add_offer.php', form);
+      setForm({ title: "", description: "" });
+      fetchOffers();
+    } catch (error) {
+      console.error('Error adding offer:', error);
+    }
+  };
+
+  const toggleFeatured = async (id: number) => {
+    try {
+      await axios.post('/api/toggle_featured.php', { id });
+      fetchOffers();
+    } catch (error) {
+      console.error('Error toggling featured:', error);
+    }
+  };
+
   return (
-    <div className="p-6 ml-56">
-      <h1 className="text-3xl font-bold mb-4">Welcome to Your Dashboard</h1>
-      <p className="text-lg text-gray-700 mb-6">
-        Here you can view your recent activity, manage your profile, and access other tools.
-      </p>
+    <div className="dashboard-container">
+      <div className="dashboard-box">
+        <h1 className="dashboard-header">Neon Dashboard</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white shadow-md rounded-xl p-5 border">
-          <h2 className="text-xl font-semibold mb-2">Orders</h2>
-          <p>View and manage recent orders.</p>
+        {/* New Offer Form */}
+        <div className="offer-form">
+          <h2>Create New Offer</h2>
+          <input
+            type="text"
+            name="title"
+            placeholder="Offer Title"
+            value={form.title}
+            onChange={handleChange}
+          />
+          <textarea
+            name="description"
+            placeholder="Offer Description"
+            value={form.description}
+            onChange={handleChange}
+          />
+          <button onClick={handleAddOffer}>Add Offer</button>
         </div>
 
-        <div className="bg-white shadow-md rounded-xl p-5 border">
-          <h2 className="text-xl font-semibold mb-2">Messages</h2>
-          <p>Check unread messages and notifications.</p>
+        {/* Featured Offers */}
+        <div>
+          <h2 className="offers-header">Featured Offers</h2>
+          {offers.filter(offer => offer.featured).map(offer => (
+            <div key={offer.id} className="offer-card featured">
+              <h3>{offer.title}</h3>
+              <p>{offer.description}</p>
+              <button onClick={() => toggleFeatured(offer.id)}>Unpick</button>
+            </div>
+          ))}
         </div>
 
-        <div className="bg-white shadow-md rounded-xl p-5 border">
-          <h2 className="text-xl font-semibold mb-2">Account Settings</h2>
-          <p>Update your account and security settings.</p>
+        {/* All Offers */}
+        <div>
+          <h2 className="offers-header">All Offers</h2>
+          {offers.map((offer) => (
+            <div
+              key={offer.id}
+              className={`offer-card ${offer.featured ? "featured" : ""}`}
+            >
+              <h3>{offer.title}</h3>
+              <p>{offer.description}</p>
+              <button
+                onClick={() => toggleFeatured(offer.id)}
+                className={offer.featured ? "unpick" : "pick"}
+              >
+                {offer.featured ? "Unpick" : "Pick for Main Page"}
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
-};
-
-export default DashboardHome;
+}
