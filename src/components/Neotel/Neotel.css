@@ -1,0 +1,263 @@
+.neotel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.neotel-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.neotel-header h1 {
+  font-size: 36px;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+.neotel-header p {
+  font-size: 18px;
+  color: #546e7a;
+}
+
+.sliding-navbar {
+  display: flex;
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sliding-navbar button {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: #546e7a;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s;
+}
+
+.sliding-navbar button.active {
+  color: #fff;
+}
+
+.slider {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.slider.opticki {
+  transform: translateX(0);
+}
+
+.slider.ostanati {
+  transform: translateX(100%);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: #546e7a;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.package-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.package-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.package-header {
+  padding: 20px;
+  background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+  position: relative;
+}
+
+.package-header h3 {
+  margin: 0;
+  font-size: 22px;
+  color: #1a237e;
+}
+
+.speed-badge {
+  display: inline-block;
+  background: #1a237e;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.package-pricing {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.regular-price, .promo-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.original-price {
+  font-size: 20px;
+  color: #9e9e9e;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.price-period {
+  display: block;
+  font-size: 14px;
+  color: #757575;
+  margin-top: 5px;
+}
+
+.promo-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #f44336;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.features-list {
+  list-style-type: none;
+  padding: 0 20px;
+  margin: 20px 0;
+}
+
+.features-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  padding-left: 30px;
+  color: #424242;
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+}
+
+.features-list li:before {
+  content: "✓";
+  color: #4caf50;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.order-button {
+  display: block;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px;
+  padding: 12px 0;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.order-button:hover {
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  transform: scale(1.05);
+}
+
+.contact-section {
+  text-align: center;
+  background: #f5f5f5;
+  padding: 40px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.contact-section h3 {
+  font-size: 24px;
+  color: #1a237e;
+  margin-bottom: 15px;
+}
+
+.contact-section p {
+  color: #546e7a;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-button {
+  background: #1a237e;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.contact-button:hover {
+  background: #3949ab;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sliding-navbar button {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+}

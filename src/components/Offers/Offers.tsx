@@ -1,42 +1,44 @@
 import React from "react";
+import './offers.css';
 
-const offers = [
-  {
-    id: 1,
-    title: "Spring Sale - 20% Off",
-    description: "Get 20% off on all spring collection items. Limited time only!",
-    validTill: "2025-06-30",
-  },
-  {
-    id: 2,
-    title: "Buy One Get One Free",
-    description: "Special BOGO offer on selected electronics.",
-    validTill: "2025-07-15",
-  },
-  {
-    id: 3,
-    title: "Free Shipping",
-    description: "Enjoy free shipping on orders over $50.",
-    validTill: "2025-12-31",
-  },
-];
+type Offer = {
+  id: number;
+  title: string;
+  description: string;
+  priceOld?: string;
+  priceNew: string;
+  promoText?: string;
+  features: string[];
+  contractTerm?: string;
+  buttonText?: string;
+};
 
-const Offers = () => {
+type Props = {
+  offers: Offer[];
+};
+
+const Offers: React.FC<Props> = ({ offers }) => {
   return (
-    <div className="max-w-4xl mx-auto p-8">
-      <h1 className="text-4xl font-bold text-purple-700 mb-8 text-center">Special Offers</h1>
-      <ul className="space-y-6">
-        {offers.map(({ id, title, description, validTill }) => (
-          <li
-            key={id}
-            className="border border-purple-300 rounded-lg p-6 hover:shadow-lg transition-shadow"
-          >
-            <h2 className="text-2xl font-semibold text-purple-800 mb-2">{title}</h2>
-            <p className="text-gray-700 mb-2">{description}</p>
-            <p className="text-sm text-gray-500">Valid till: {new Date(validTill).toLocaleDateString()}</p>
-          </li>
-        ))}
-      </ul>
+    <div className="offers-container">
+      {offers.map((offer) => (
+        <div key={offer.id} className="offer-card">
+          <div className="offer-header">
+            <h2>{offer.title}</h2>
+            {offer.contractTerm && <p className="contract-term">{offer.contractTerm}</p>}
+            {offer.promoText && <div className="promo-badge">{offer.promoText}</div>}
+          </div>
+          <div className="offer-pricing">
+            {offer.priceOld && <span className="price-old">{offer.priceOld}</span>}
+            <span className="price-new">{offer.priceNew}</span>
+          </div>
+          <ul className="offer-features">
+            {offer.features.map((feature, i) => (
+              <li key={i}>{feature}</li>
+            ))}
+          </ul>
+          <button className="order-btn">{offer.buttonText || "Нарачај веднаш"}</button>
+        </div>
+      ))}
     </div>
   );
 };

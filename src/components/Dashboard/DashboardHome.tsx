@@ -202,12 +202,7 @@ export default function DashboardHome() {
           </div>
         )}
 
-        {debug && (
-          <div className="debug-info">
-            <h3>Debug Information</h3>
-            <pre>{JSON.stringify(debug, null, 2)}</pre>
-          </div>
-        )}
+      
 
         {/* New Offer Form */}
         <div className="offer-form">
