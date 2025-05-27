@@ -15,16 +15,21 @@ const Header: React.FC = () => {
   return (
     <header>
       <div className="logo">
+        <NavLink to="/dashboard/home">
         <img
           src={images.logo}
           alt="Neon Logo"
           onError={handleImageError}
           onLoad={() => console.log('Logo loaded successfully')}
         />
+        </NavLink>
         {/* Removed NavLink and brand-name completely */}
       </div>
 
       <nav>
+         {/* <NavLink to="/dashboard/dashboard" className={isActiveLink}>
+          Home
+        </NavLink> */}
         <NavLink to="/dashboard/categories" className={isActiveLink}>
           Categories
         </NavLink>
