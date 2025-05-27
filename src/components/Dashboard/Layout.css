@@ -5,29 +5,38 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   font-family: var(--font-primary);
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   line-height: var(--leading-normal);
+  overflow-x: hidden; /* Prevent horizontal scrolling only */
 }
 
 .layout-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   position: relative;
+  overflow-x: hidden; /* Prevent horizontal scrolling only */
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 0;
+  padding: 20px 2rem;
   background-color: var(--bg-primary);
-  min-height: calc(100vh - 64px); /* Subtract header height */
-  max-width: 100%; /* Changed from 1440px to 100% to use full width */
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  max-width: 100%;
 }
 
 /* Ensure all direct children of main-content have proper spacing */
@@ -52,6 +61,7 @@ header {
   display: flex;
   align-items: center;
   padding: 0 2rem;
+  overflow: hidden !important; /* Force no scrolling with !important */
 }
 
 /* Add smooth transitions for route changes */

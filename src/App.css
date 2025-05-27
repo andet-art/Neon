@@ -1,3 +1,19 @@
+/* 1. Global box‑sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Prevent all overflow and reset margins/paddings */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent all scrolling */
+}
+
+/* Your existing sidebar styles */
 .sidebar {
   width: 220px;
   height: 100vh;
@@ -23,4 +39,10 @@
 .sidebar-link.active {
   background-color: #1abc9c;
   font-weight: bold;
+}
+
+/* Optional: ensure your main content sits to the right of the sidebar */
+.main-content {
+  margin-left: 220px; /* same as .sidebar width */
+  padding: 20px;
 }

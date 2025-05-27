@@ -13,23 +13,14 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header>
+    <header style={{ justifyContent: 'space-between' }}>
       <div className="logo">
         <NavLink to="/dashboard/home">
-        <img
-          src={images.logo}
-          alt="Neon Logo"
-          onError={handleImageError}
-          onLoad={() => console.log('Logo loaded successfully')}
-        />
+          <img src={images.logo} alt="Neon Logo" onError={handleImageError} />
         </NavLink>
-        {/* Removed NavLink and brand-name completely */}
       </div>
 
-      <nav>
-         {/* <NavLink to="/dashboard/dashboard" className={isActiveLink}>
-          Home
-        </NavLink> */}
+      <nav style={{ marginLeft: 'auto', justifyContent: 'flex-end' }}>
         <NavLink to="/dashboard/categories" className={isActiveLink}>
           Categories
         </NavLink>
@@ -52,16 +43,6 @@ const Header: React.FC = () => {
           Neotel
         </NavLink>
       </nav>
-
-      <div className="profile">
-        <img
-          src={images.slides.slide1}
-          alt="Profile"
-          className="profile-img"
-          onError={handleImageError}
-          onLoad={() => console.log('Profile image loaded successfully')}
-        />
-      </div>
     </header>
   );
 };

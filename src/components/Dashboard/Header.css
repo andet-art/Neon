@@ -1,21 +1,25 @@
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Keep space-between */
   padding: 0 2rem;
   background-color: var(--bg-primary);
   box-shadow: var(--shadow-sm);
   height: 64px;
-  position: relative;
-  z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   width: 100%;
+  overflow: hidden !important;
 }
+
 
 .logo {
   display: flex;
   align-items: center;
   height: 100%;
-  margin-right: 26rem; /* Increased from 12rem to 16rem for even more space */
+  margin-right: 0; /* No right margin */
+  flex: 0 0 auto; /* Don't grow or shrink */
 }
 
 .logo img {
@@ -27,10 +31,14 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 0rem; /* Decreased from 3rem to 2rem for less space between nav items */
+  gap: 0;
   height: 100%;
-  margin-left: 0;
-  flex-grow: 1;
+  margin-left: auto; /* Push nav to the right */
+  padding-left: 0;
+  flex-grow: 0;
+  overflow: hidden !important;
+  white-space: nowrap;
+  justify-content: flex-end; /* Align items to the end (right) */
 }
 
 /* Add a special class for the first nav link to give it extra spacing if needed */
@@ -43,11 +51,12 @@ nav {
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 1rem; /* Keep some padding within each button */
   color: var(--text-primary);
   font-weight: var(--font-medium);
   text-decoration: none;
   transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .nav-btn::after {
@@ -78,16 +87,15 @@ nav {
   transform: scaleX(1);
 }
 
+/* Remove or comment out the profile styles since we're not using it anymore */
+/* 
 .profile {
   display: flex;
   align-items: center;
   padding: 0.5rem;
   border-radius: 50%;
   transition: background-color 0.3s ease;
-}
-
-.profile:hover {
-  background-color: var(--bg-secondary);
+  margin-left: auto;
 }
 
 .profile-img {
@@ -97,6 +105,7 @@ nav {
   object-fit: cover;
   border: 2px solid var(--border-color);
 }
+*/
 
 /* Responsive styles */
 @media (max-width: 1024px) {
@@ -121,4 +130,8 @@ nav {
   nav {
     display: none;
   }
+}
+.container {
+  max-width: 1200px; /* REMOVE THIS IF IT EXISTS */
+  margin: 0 auto;
 }
