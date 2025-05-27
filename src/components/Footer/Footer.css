@@ -1,0 +1,45 @@
+/* Footer.css */
+
+footer {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mont-bold {
+  font-weight: 700;
+}
+
+.mont-semibold {
+  font-weight: 600;
+}
+
+.co-text {
+  font-size: 0.9rem;
+  color: #e0e0f8;
+}
+
+button {
+  text-transform: none !important;
+  font-size: 0.9rem !important;
+  transition: color 0.3s ease;
+}
+
+button:hover {
+  color: #00ffea !important; /* neon cyan hover */
+}
+
+.MuiIconButton-root {
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.MuiIconButton-root:hover {
+  background-color: rgba(0, 255, 234, 0.2) !important; /* neon cyan hover background */
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

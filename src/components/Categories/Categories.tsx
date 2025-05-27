@@ -1,66 +1,51 @@
 import React from 'react';
-import { Box, Typography, Paper } from '@mui/material';
+import './Categories.css';
+import Footer from '../Footer/Footer';
 
 const categories = [
-  { id: 1, name: 'Category 1', description: 'Description for category 1' },
-  { id: 2, name: 'Category 2', description: 'Description for category 2' },
-  { id: 3, name: 'Category 3', description: 'Description for category 3' },
+  {
+    id: 1,
+    name: 'Category 1',
+    description: 'Description for category 1',
+    imageUrl: '/assets/images/slide1.webp',
+  },
+  {
+    id: 2,
+    name: 'Category 2',
+    description: 'Description for category 2',
+    imageUrl: '/assets/images/slide2.jpg',
+  },
+  {
+    id: 3,
+    name: 'Category 3',
+    description: 'Description for category 3',
+    imageUrl: '/assets/images/slide3.png',
+  },
 ];
 
 const Categories: React.FC = () => {
   return (
-    <Box 
-      sx={{ 
-        display: 'flex',
-        flexDirection: 'column',
-        bgcolor: '#f5f5f5',
-        flex: 1,
-        width: '100%',
-        height: '100%'
-      }}
-    >
-      <Box sx={{ p: 3, flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
-        <Typography variant="h4" gutterBottom>
-          Categories
-        </Typography>
-        
-        <Box 
-          sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 3,
-            flex: 1,
-            width: '100%'
-          }}
-        >
-          {categories.map((category) => (
-            <Paper
-              key={category.id}
-              sx={{
-                p: 3,
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: 3,
-                },
-                bgcolor: 'white',
-                borderRadius: 2
-              }}
-            >
-              <Typography variant="h6" gutterBottom>
-                {category.name}
-              </Typography>
-              <Typography color="textSecondary">
-                {category.description}
-              </Typography>
-            </Paper>
-          ))}
-        </Box>
-      </Box>
-    </Box>
+    <div className="categories-container">
+      <h1 className="categories-title">Categories</h1>
+      <div className="categories-list">
+        {categories.map((category) => (
+          <div key={category.id} className="category-card">
+            <div className="category-image-wrapper">
+              <img
+                src={category.imageUrl}
+                alt={category.name}
+                className="category-image"
+              />
+            </div>
+            <div className="category-info">
+              <h2 className="category-name">{category.name}</h2>
+              <p className="category-description">{category.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <Footer />
+    </div>
   );
 };
 

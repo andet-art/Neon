@@ -1,0 +1,159 @@
+.about-container {
+  background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+  color: #333;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #0f172a; /* dark blue-gray */
+  transition: transform 0.5s, color 0.5s;
+}
+
+.about-title:hover {
+  transform: scale(1.05);
+  color: #3b82f6; /* bright blue on hover */
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-text h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b; /* dark slate */
+}
+
+.about-text p {
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: #334155; /* medium dark slate */
+}
+
+.about-image img {
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(100, 116, 139, 0.3);
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+}
+
+.services-grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Service Cards */
+
+.service-card {
+  background-color: #f8fafc; /* very light gray */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(100, 116, 139, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #1e293b; /* dark slate */
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.service-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4); /* bright blue shadow */
+  z-index: 10;
+}
+
+.service-card-content {
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Extra info overlay on hover */
+
+.extra-info {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(59, 130, 246, 0.95); /* semi-transparent blue */
+  color: white;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  text-align: center;
+  z-index: 5;
+}
+
+.service-card:hover .extra-info {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.extra-info p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.extra-info button {
+  background-color: white;
+  color: #3b82f6;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.extra-info button:hover {
+  background-color: #e0e7ff;
+}

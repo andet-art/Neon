@@ -1,30 +1,38 @@
 import React from "react";
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Grid } from '@mui/material';
+import WebIcon from '@mui/icons-material/Web';
+import BuildIcon from '@mui/icons-material/Build';
+import MemoryIcon from '@mui/icons-material/Memory';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const services = [
   {
     id: 1,
-    title: "Web Development",
+    title: "Making Webpages",
     description:
-      "Building responsive and modern websites tailored to your business needs.",
+      "Creating modern, responsive, and user-friendly websites tailored to your business needs.",
+    icon: <WebIcon sx={{ fontSize: 60, color: '#1976d2' }} />
   },
   {
     id: 2,
-    title: "Mobile App Development",
+    title: "Software Maintenance",
     description:
-      "Creating user-friendly mobile applications for both Android and iOS platforms.",
+      "Providing ongoing support and updates to keep your software running smoothly and securely.",
+    icon: <BuildIcon sx={{ fontSize: 60, color: '#1976d2' }} />
   },
   {
     id: 3,
-    title: "UI/UX Design",
+    title: "Hardware Fixing",
     description:
-      "Designing intuitive interfaces and engaging user experiences for your products.",
+      "Repairing and maintaining your computer hardware to ensure optimal performance.",
+    icon: <MemoryIcon sx={{ fontSize: 60, color: '#1976d2' }} />
   },
   {
     id: 4,
-    title: "Cloud Solutions",
+    title: "Other Services",
     description:
-      "Offering scalable and secure cloud infrastructure to boost your operations.",
+      "We offer additional services tailored to your specific needs. Contact us to learn more.",
+    icon: <MoreHorizIcon sx={{ fontSize: 60, color: '#1976d2' }} />
   },
 ];
 
@@ -32,50 +40,47 @@ const Service = () => {
   return (
     <Box 
       sx={{ 
-        display: 'flex',
-        flexDirection: 'column',
         bgcolor: '#f5f5f5',
-        flex: 1,
+        flexGrow: 1,
         width: '100%',
-        height: '100%'
+        minHeight: '100vh',
+        p: 4
       }}
     >
-      <Typography variant="h3" component="h1" gutterBottom align="center" color="primary">
+      <Typography variant="h3" component="h1" gutterBottom align="center" color="primary" sx={{ mb: 6 }}>
         Our Services
       </Typography>
-      <Box 
-        sx={{ 
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 4,
-          flex: 1,
-          width: '100%'
-        }}
-      >
-        {services.map(({ id, title, description }) => (
-          <Paper
-            key={id}
-            sx={{
-              p: 3,
-              height: '100%',
-              bgcolor: 'white',
-              borderRadius: 2,
-              boxShadow: 1,
-              transition: 'box-shadow 0.3s',
-              '&:hover': {
-                boxShadow: 4,
-              },
-            }}
-          >
-            <Typography variant="h5" component="h2" gutterBottom color="primary.dark">
-              {title}
-            </Typography>
-            <Typography variant="body1" color="textSecondary">
-              {description}
-            </Typography>
-          </Paper>
+      <Grid container spacing={4} justifyContent="center">
+        {services.map(({ id, title, description, icon }) => (
+          <Grid item xs={12} sm={6} md={3} key={id} component="div">
+            <Paper
+              elevation={3}
+              sx={{
+                p: 4,
+                height: '100%',
+                textAlign: 'center',
+                borderRadius: 3,
+                transition: 'transform 0.3s, box-shadow 0.3s',
+                cursor: 'pointer',
+                '&:hover': {
+                  boxShadow: 6,
+                  transform: 'scale(1.05)',
+                },
+              }}
+            >
+              <Box sx={{ mb: 2 }}>
+                {icon}
+              </Box>
+              <Typography variant="h5" component="h2" gutterBottom color="primary.dark">
+                {title}
+              </Typography>
+              <Typography variant="body1" color="textSecondary">
+                {description}
+              </Typography>
+            </Paper>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </Box>
   );
 };
