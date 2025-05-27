@@ -25,21 +25,20 @@ body {
   height: 100vh;
   width: 100%;
   position: relative;
-  overflow-x: hidden; /* Prevent horizontal scrolling only */
+  overflow-x: hidden;
 }
 
 .main-content {
   flex: 1;
   width: 100%;
   margin: 0;
-  padding: 20px 2rem;
+  padding: 20px 0; /* ✅ Removed horizontal padding */
   background-color: var(--bg-primary);
-  overflow-y: auto; /* Allow vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
   max-width: 100%;
 }
 
-/* Ensure all direct children of main-content have proper spacing */
 .main-content > * {
   width: 100%;
   margin-bottom: 2rem;
@@ -61,10 +60,10 @@ header {
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  overflow: hidden !important; /* Force no scrolling with !important */
+  overflow: hidden !important;
 }
 
-/* Add smooth transitions for route changes */
+/* Transitions */
 .main-content > * {
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -83,7 +82,7 @@ header {
 /* Responsive styles */
 @media (max-width: 1024px) {
   .main-content {
-    padding: 16px;
+    padding: 20px 0; /* ✅ Keep edge-to-edge on tablets */
   }
 }
 
@@ -91,8 +90,8 @@ header {
   header {
     padding: 0 1rem;
   }
-  
+
   .main-content {
-    padding: 12px;
+    padding: 20px 0; /* ✅ Keep edge-to-edge on mobile */
   }
 }

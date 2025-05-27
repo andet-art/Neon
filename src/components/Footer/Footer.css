@@ -2,6 +2,13 @@
 
 footer {
   font-family: 'Montserrat', sans-serif;
+  width: 100%;                /* Ensure full width */
+  background-color: #1e90ff;  /* Or your preferred color */
+  color: white;
+  text-align: center;
+  padding: 20px 40px;
+  margin: 0;                  /* Remove any potential margin */
+  box-sizing: border-box;     /* Ensure padding doesn't affect width */
 }
 
 .mont-bold {
