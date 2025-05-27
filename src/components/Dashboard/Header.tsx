@@ -1,11 +1,9 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { images } from '../../assets/images';
 
 const Header: React.FC = () => {
-  const location = useLocation();
-
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     isActive ? 'nav-btn active' : 'nav-btn';
 
@@ -13,9 +11,6 @@ const Header: React.FC = () => {
     console.log('Image failed to load:', e.currentTarget.src);
     e.currentTarget.src = '/vite.svg'; // fallback image
   };
-
-  // Show Neotel sliding submenu only on /dashboard/neotel and its subpaths
-  const showNeotelSubmenu = location.pathname.startsWith('/dashboard/neotel');
 
   return (
     <header>
@@ -26,12 +21,10 @@ const Header: React.FC = () => {
           onError={handleImageError}
           onLoad={() => console.log('Logo loaded successfully')}
         />
-        <span className="brand-name">Neon Dashboard</span>
+        {/* Removed NavLink and brand-name completely */}
       </div>
+
       <nav>
-        <NavLink to="/dashboard" end className={isActiveLink}>
-          Dashboard
-        </NavLink>
         <NavLink to="/dashboard/categories" className={isActiveLink}>
           Categories
         </NavLink>
@@ -47,16 +40,13 @@ const Header: React.FC = () => {
         <NavLink to="/dashboard/shop" className={isActiveLink}>
           Shop
         </NavLink>
-        <NavLink to="/dashboard/Offers" className={isActiveLink}>
-          Offers
+        <NavLink to="/dashboard/offers" className={isActiveLink}>
+          Dashboard
         </NavLink>
-        {/* Replaced Offers with Neotel */}
         <NavLink to="/dashboard/neotel" className={isActiveLink}>
           Neotel
         </NavLink>
       </nav>
-
-      
 
       <div className="profile">
         <img

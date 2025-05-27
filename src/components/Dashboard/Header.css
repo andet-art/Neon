@@ -8,13 +8,14 @@ header {
   height: 64px;
   position: relative;
   z-index: 1000;
+  width: 100%;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
   height: 100%;
+  margin-right: 26rem; /* Increased from 12rem to 16rem for even more space */
 }
 
 .logo img {
@@ -23,18 +24,18 @@ header {
   object-fit: contain;
 }
 
-.brand-name {
-  font-size: 1.25rem;
-  font-weight: var(--font-bold);
-  color: var(--text-primary);
-  font-family: var(--font-secondary);
-}
-
 nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0rem; /* Decreased from 3rem to 2rem for less space between nav items */
   height: 100%;
+  margin-left: 0;
+  flex-grow: 1;
+}
+
+/* Add a special class for the first nav link to give it extra spacing if needed */
+.nav-btn:first-child {
+  margin-left: 0; /* Ensure first item starts at the beginning of nav */
 }
 
 .nav-btn {

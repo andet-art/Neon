@@ -23,11 +23,11 @@ body {
 .main-content {
   flex: 1;
   width: 100%;
-  max-width: 1440px;
   margin: 0 auto;
   padding: 20px;
   background-color: var(--bg-primary);
   min-height: calc(100vh - 64px); /* Subtract header height */
+  max-width: 100%; /* Changed from 1440px to 100% to use full width */
 }
 
 /* Ensure all direct children of main-content have proper spacing */
