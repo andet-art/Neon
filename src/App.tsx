@@ -1,17 +1,17 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Dashboard/Layout";
-import DashboardHome from "./components/Dashboard/DashboardHome"; 
+import DashboardHome from "./components/Dashboard/DashboardHome";
 import Categories from "./components/Categories/Categories";
 import About from "./components/About/About";
 import Service from "./components/Service/Service";
 import Contact from "./components/Contact/Contact";
 import Shop from "./components/Shop/Shop";
-// import Cart from "./components/Cart/Cart"; // no longer needed if you don't use Cart
-import Offers from "./components/Offers/Offers";  // import your Offers component
+import Offers from "./components/Offers/Offers";
 import Neotel from "./components/Neotel/Neotel";
+import SignIn from "./components/SignIn";
 
-// Add your offers data here
+// Sample offers data
 const offersData = [
   {
     id: 1,
@@ -27,13 +27,19 @@ const offersData = [
     ],
     buttonText: "Нарачај веднаш",
   },
-  // You can add more offers here
+  // Add more offers as needed
 ];
 
 const App: React.FC = () => {
   return (
     <Routes>
+      {/* Redirect from root to dashboard */}
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+      {/* ✅ SignIn route should be top-level */}
+      <Route path="/signin" element={<SignIn />} />
+
+      {/* ✅ Dashboard layout with nested routes */}
       <Route path="/dashboard" element={<Layout />}>
         <Route index element={<DashboardHome />} />
         <Route path="categories" element={<Categories />} />
@@ -41,10 +47,11 @@ const App: React.FC = () => {
         <Route path="service" element={<Service />} />
         <Route path="contact" element={<Contact />} />
         <Route path="shop" element={<Shop />} />
-        {/* Pass the offersData as a prop here */}
         <Route path="offers" element={<Offers offers={offersData} />} />
         <Route path="neotel" element={<Neotel />} />
       </Route>
+
+      {/* Fallback route */}
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
