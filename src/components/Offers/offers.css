@@ -112,3 +112,197 @@
 .order-btn:hover {
   background-color: #cf7a15;
 }
+
+/* Admin Dashboard Styles */
+.admin-dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-dashboard h1 {
+  margin-bottom: 30px;
+  color: #1a237e;
+}
+
+.admin-section {
+  margin-bottom: 40px;
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.admin-section h2 {
+  margin-bottom: 20px;
+  color: #1a237e;
+}
+
+.packages-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.package-admin-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.package-admin-card h3 {
+  margin-top: 0;
+  color: #1a237e;
+}
+
+.edit-button {
+  background: #1a237e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.edit-button:hover {
+  background: #3949ab;
+}
+
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.edit-features-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: #f5f5f5;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.remove-feature {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-feature {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-feature input {
+  flex: 1;
+}
+
+.add-feature button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-buttons button:first-child {
+  background: #4caf50;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background: #f44336;
+  color: white;
+}
+
+.modal-buttons button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.preview-section {
+  margin-top: 40px;
+  border-top: 2px solid #ddd;
+  padding-top: 40px;
+}
+
+.preview-section h2 {
+  margin-bottom: 20px;
+  color: #1a237e;
+}
+
+.admin-controls {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reset-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.reset-button:hover {
+  background-color: #d32f2f;
+}

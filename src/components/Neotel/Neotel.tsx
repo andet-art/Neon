@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./neotel.css";
 
-const Neotel: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<"opticki" | "ostanati">("opticki");
+// Define the interface locally without importing
+interface InternetPackage {
+  id: number;
+  name: string;
+  speed: string;
+  price: string;
+  promo: string | null;
+  features: string[];
+}
 
-  // Optical internet packages data
-  const optickiPaketi = [
+interface NeotelProps {
+  optickiPaketi?: InternetPackage[];
+  ostanatiPaketi?: InternetPackage[];
+}
+
+const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = [] }) => {
+  const [activeTab, setActiveTab] = useState<"opticki" | "ostanati">("opticki");
+  const [localOptickiPaketi, setLocalOptickiPaketi] = useState<InternetPackage[]>([]);
+  const [localOstanatiPaketi, setLocalOstanatiPaketi] = useState<InternetPackage[]>([]);
+
+  // Default optical internet packages data (used if none provided via props)
+  const defaultOptickiPaketi: InternetPackage[] = [
     {
       id: 1,
       name: "Fiber Basic",
@@ -32,8 +49,8 @@ const Neotel: React.FC = () => {
     },
   ];
 
-  // Other packages data
-  const ostanatiPaketi = [
+  // Default other packages data (used if none provided via props)
+  const defaultOstanatiPaketi: InternetPackage[] = [
     {
       id: 1,
       name: "ADSL Standard",
@@ -59,6 +76,36 @@ const Neotel: React.FC = () => {
       features: ["100GB месечно", "4G рутер", "Флексибилна локација", "Брза активација"]
     },
   ];
+
+  // Load data from localStorage on component mount
+  useEffect(() => {
+    const savedOpticki = localStorage.getItem('optickiPaketi');
+    const savedOstanati = localStorage.getItem('ostanatiPaketi');
+    
+    if (savedOpticki) {
+      setLocalOptickiPaketi(JSON.parse(savedOpticki));
+    }
+    
+    if (savedOstanati) {
+      setLocalOstanatiPaketi(JSON.parse(savedOstanati));
+    }
+  }, []);
+
+  // Determine which packages to display with priority:
+  // 1. Props (if provided)
+  // 2. localStorage (if available)
+  // 3. Default values (fallback)
+  const displayOptickiPaketi = optickiPaketi.length > 0 
+    ? optickiPaketi 
+    : localOptickiPaketi.length > 0 
+      ? localOptickiPaketi 
+      : defaultOptickiPaketi;
+      
+  const displayOstanatiPaketi = ostanatiPaketi.length > 0 
+    ? ostanatiPaketi 
+    : localOstanatiPaketi.length > 0 
+      ? localOstanatiPaketi 
+      : defaultOstanatiPaketi;
 
   return (
     <div className="neotel-container">
@@ -92,7 +139,7 @@ const Neotel: React.FC = () => {
             </div>
             
             <div className="packages-grid">
-              {optickiPaketi.map(paket => (
+              {displayOptickiPaketi.map(paket => (
                 <div key={paket.id} className="package-card">
                   <div className="package-header">
                     <h3>{paket.name}</h3>
@@ -133,7 +180,7 @@ const Neotel: React.FC = () => {
             </div>
             
             <div className="packages-grid">
-              {ostanatiPaketi.map(paket => (
+              {displayOstanatiPaketi.map(paket => (
                 <div key={paket.id} className="package-card">
                   <div className="package-header">
                     <h3>{paket.name}</h3>

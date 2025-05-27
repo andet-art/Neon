@@ -47,8 +47,8 @@ const Header: React.FC = () => {
         <NavLink to="/dashboard/shop" className={isActiveLink}>
           Shop
         </NavLink>
-        <NavLink to="/dashboard/cart" className={isActiveLink}>
-          Cart
+        <NavLink to="/dashboard/Offers" className={isActiveLink}>
+          Offers
         </NavLink>
         {/* Replaced Offers with Neotel */}
         <NavLink to="/dashboard/neotel" className={isActiveLink}>
@@ -56,24 +56,7 @@ const Header: React.FC = () => {
         </NavLink>
       </nav>
 
-      {/* Neotel Sliding Submenu */}
-      {showNeotelSubmenu && (
-        <nav className="neotel-submenu">
-          <NavLink
-            to="/dashboard/neotel/opticki"
-            className={isActiveLink}
-            end
-          >
-            Оптички Интернет
-          </NavLink>
-          <NavLink
-            to="/dashboard/neotel/ostanati"
-            className={isActiveLink}
-          >
-            Останати Пакети
-          </NavLink>
-        </nav>
-      )}
+      
 
       <div className="profile">
         <img
