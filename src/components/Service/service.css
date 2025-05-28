@@ -1,0 +1,54 @@
+/* service.css */
+
+.service-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+}
+
+.service-card {
+  padding: 2rem;
+  height: 100%;
+  text-align: center;
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.service-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.service-icon {
+  font-size: 60px;
+  color: #1976d2;
+}
+
+.icon-container {
+  margin-bottom: 1rem;
+}
+
+.service-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.service-modal {
+  max-width: 600px;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 1rem;
+  text-align: center;
+}
