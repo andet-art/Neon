@@ -25,13 +25,35 @@ const services = [
   },
 ];
 
+const teamMembers = [
+  { name: "Andet Fejzuli", role: "CEO & Founder", image: "/images/team/andet.jpg" },
+  { name: "Elira Shala", role: "Lead Developer", image: "/images/team/elira.jpg" },
+  { name: "Blerim Arifi", role: "Project Manager", image: "/images/team/blerim.jpg" },
+  { name: "Arta Kastrati", role: "UX/UI Designer", image: "/images/team/arta.jpg" },
+];
+
+const testimonials = [
+  {
+    name: "John Doe",
+    feedback: "Neon Tech Solutions exceeded our expectations! Their web development team is top-notch.",
+  },
+  {
+    name: "Jane Smith",
+    feedback: "Quick and reliable internet installation with amazing customer support.",
+  },
+  {
+    name: "Michael Lee",
+    feedback: "Their hardware repair service saved my business devices — highly recommended!",
+  },
+];
+
 const About: React.FC = () => {
   return (
     <div className="about-container">
-      <h1 className="about-title">About Neon</h1>
+      
 
-      <div className="about-grid">
-        <div className="about-text">
+      <section className="about-grid">
+        <article className="about-text">
           <h2>Who We Are</h2>
           <p>
             Neon is a tech company based in Tetovo, North Macedonia. We specialize
@@ -39,16 +61,33 @@ const About: React.FC = () => {
             complex software issues. Our team is passionate about technology and
             committed to delivering quality services to both individuals and businesses.
           </p>
-        </div>
+        </article>
 
-        <div className="about-image">
-          <img src="/images/team-working.jpg" alt="Team working" />
-        </div>
-      </div>
+        <aside className="about-image">
+          <img src="/images/team-working.jpg" alt="Team working together" />
+        </aside>
+      </section>
 
-      <div className="services-grid">
+      <section className="mission-vision">
+        <div>
+          <h2>Our Mission</h2>
+          <p>
+            To empower our clients with innovative technology solutions that
+            simplify their lives and grow their businesses.
+          </p>
+        </div>
+        <div>
+          <h2>Our Vision</h2>
+          <p>
+            To be the leading tech partner in the Balkans, known for exceptional
+            quality, innovation, and customer satisfaction.
+          </p>
+        </div>
+      </section>
+
+      <section className="services-grid">
         {services.map((service, index) => (
-          <div className="service-card" key={index}>
+          <article className="service-card" key={index}>
             <div className="service-card-content">
               <div className="service-icon">{service.icon}</div>
               <h3 className="service-title">{service.title}</h3>
@@ -63,12 +102,43 @@ const About: React.FC = () => {
                 Contact Us
               </button>
             </div>
-          </div>
+          </article>
         ))}
-      </div>
+      </section>
+
+      <section className="team-section">
+        <h2>Meet the Team</h2>
+        <div className="team-grid">
+          {teamMembers.map(({ name, role, image }, idx) => (
+            <div className="team-member" key={idx}>
+              <img src={image} alt={`${name} profile`} />
+              <h3>{name}</h3>
+              <p>{role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="testimonials-section">
+        <h2>What Our Clients Say</h2>
+        <div className="testimonials-list">
+          {testimonials.map(({ name, feedback }, idx) => (
+            <blockquote key={idx} className="testimonial">
+              <p>"{feedback}"</p>
+              <footer>- {name}</footer>
+            </blockquote>
+          ))}
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <h2>Ready to work with us?</h2>
+        <p>Contact Neon Tech Solutions today and let's build your future together.</p>
+        <button onClick={() => alert("Contact form coming soon!")}>Get in Touch</button>
+      </section>
+
+      
     </div>
-    
-    
   );
 };
 
