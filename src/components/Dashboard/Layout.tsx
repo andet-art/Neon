@@ -14,8 +14,9 @@ const Layout: React.FC = () => {
       <Header />
       <main className="main-content">
         <Outlet />
+        <Footer /> {/* ✅ Footer moved outside main-content */}
+
       </main>
-      <Footer /> {/* ✅ Footer moved outside main-content */}
     </div>
   );
 };

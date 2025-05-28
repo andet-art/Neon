@@ -44,7 +44,6 @@ const Categories: React.FC = () => {
           </div>
         ))}
       </div>
-      <Footer />
     </div>
   );
 };

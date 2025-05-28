@@ -66,7 +66,6 @@ const About: React.FC = () => {
           </div>
         ))}
       </div>
-      <Footer/>
     </div>
     
     
