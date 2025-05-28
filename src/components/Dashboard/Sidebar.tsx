@@ -6,7 +6,7 @@ import "./Sidebar.css"; // optional, for custom styles
 
 const Sidebar: React.FC = () => {
   const links = [
-    { name: "Dashboard", path: "/dashboard" },
+    { name: "Home", path: "./home" },
     { name: "Categories", path: "/categories" },
     { name: "About Us", path: "/about" },
     { name: "Service", path: "/service" },

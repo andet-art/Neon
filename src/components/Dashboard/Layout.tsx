@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from "../Footer/Footer";
- // ✅ Import Footer
 import './Layout.css';
 
 const Layout: React.FC = () => {
@@ -14,7 +13,7 @@ const Layout: React.FC = () => {
       <Header />
       <main className="main-content">
         <Outlet />
-        <Footer /> {/* ✅ Footer moved outside main-content */}
+        <Footer /> {/* Footer moved outside main-content */}
 
       </main>
     </div>

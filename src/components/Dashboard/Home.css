@@ -1,0 +1,109 @@
+/* ===== Home Container ===== */
+.home-container {
+  background: #fbfcff;
+  color: #1a1a2e;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  user-select: none;
+}
+
+/* ===== Section Title ===== */
+.home-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  color: #1a1a2e;
+  text-shadow: 0 2px 6px rgba(26, 26, 46, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.home-title:hover {
+  color: #8a88f8;
+  transform: scale(1.05) translateY(-5px);
+  text-shadow: 0 6px 12px #8a88f8;
+}
+
+/* ===== Home Feature Grid ===== */
+.home-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .home-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Feature Card ===== */
+.feature-card {
+  background: #f4f5ff;
+  padding: 2.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 20px rgba(138, 136, 248, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(42, 41, 87, 0.45);
+}
+
+/* ===== Feature Icon ===== */
+.feature-icon {
+  font-size: 3rem;
+  color: #8a88f8;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Feature Title ===== */
+.feature-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #4a4a6a;
+  margin-bottom: 1rem;
+}
+
+/* ===== Feature Description ===== */
+.feature-card p {
+  font-size: 1.1rem;
+  color: #616166;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* ===== Scrollbar ===== */
+.home-container::-webkit-scrollbar {
+  width: 9px;
+}
+
+.home-container::-webkit-scrollbar-thumb {
+  background: #8a88f8;
+  border-radius: 10px;
+}
+
+.home-container::-webkit-scrollbar-track {
+  background: #f0f1fa;
+}

@@ -64,11 +64,14 @@ const Header: React.FC = () => {
 
       <nav style={{ marginLeft: 'auto', justifyContent: 'flex-end' }}>
         {/* Always show these navigation links */}
-        <NavLink to="/dashboard/categories" className={isActiveLink}>
-          Categories
+        <NavLink to="/dashboard/home" className={isActiveLink}>
+        Home
         </NavLink>
         <NavLink to="/dashboard/about" className={isActiveLink}>
           About
+        </NavLink>
+        <NavLink to="/dashboard/categories" className={isActiveLink}>
+          Categories
         </NavLink>
         <NavLink to="/dashboard/service" className={isActiveLink}>
           Service
