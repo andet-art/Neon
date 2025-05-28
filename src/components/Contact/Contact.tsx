@@ -1,48 +1,98 @@
+// src/components/Contact.tsx
 import React, { useState } from "react";
-import { Box, Typography, Paper, TextField, Button, Alert } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Paper,
+  TextField,
+  Button,
+  Alert,
+} from "@mui/material";
 
-const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+interface FormState {
+  name: string;
+  email: string;
+  message: string;
+}
+
+const Contact: React.FC = () => {
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/backend/api/contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Server error");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error("Error submitting message:", err);
+      setError(err.message);
+    }
   };
 
   return (
-    <Box 
-      sx={{ 
-        display: 'flex',
-        flexDirection: 'column',
-        bgcolor: '#f5f5f5',
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        bgcolor: "#f5f5f5",
         flex: 1,
-        width: '100%',
-        height: '100%'
+        width: "100%",
+        minHeight: "100vh",
+        p: 2,
       }}
     >
-      <Typography variant="h3" component="h1" gutterBottom align="center" color="primary">
+      <Typography
+        variant="h3"
+        component="h1"
+        gutterBottom
+        align="center"
+        color="primary"
+      >
         Contact Us
       </Typography>
 
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flex: 1,
+        }}
+      >
         <Paper
           sx={{
             p: 4,
-            width: '100%',
-            maxWidth: '600px',
-            bgcolor: 'white',
+            width: "100%",
+            maxWidth: "600px",
+            bgcolor: "white",
             borderRadius: 2,
-            boxShadow: 1
+            boxShadow: 1,
           }}
         >
           {submitted ? (
@@ -50,15 +100,21 @@ const Contact = () => {
               Thank you for your message! We will get back to you soon.
             </Alert>
           ) : (
-            <Box 
-              component="form" 
+            <Box
+              component="form"
               onSubmit={handleSubmit}
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 3
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
               }}
             >
+              {error && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                  {error}
+                </Alert>
+              )}
+
               <TextField
                 fullWidth
                 label="Name"
@@ -97,11 +153,11 @@ const Contact = () => {
                 variant="contained"
                 color="primary"
                 size="large"
-                sx={{ 
+                sx={{
                   mt: 2,
                   py: 1.5,
                   px: 4,
-                  alignSelf: 'flex-start'
+                  alignSelf: "flex-start",
                 }}
               >
                 Send Message

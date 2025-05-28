@@ -1,0 +1,51 @@
+/* Contact.css */
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  flex: 1;
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.contact-title {
+  text-align: center;
+  color: #1976d2; /* MUI primary blue */
+  margin-bottom: 16px;
+}
+
+.contact-center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.contact-paper {
+  padding: 32px;
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.go-home-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.go-home-button {
+  font-size: 1.25rem;
+  padding: 16px 48px;
+  border-radius: 8px;
+}
