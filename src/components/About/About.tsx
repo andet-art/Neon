@@ -64,7 +64,7 @@ const About: React.FC = () => {
         </article>
 
         <aside className="about-image">
-          <img src="/images/team-working.jpg" alt="Team working together" />
+          <img src="/public/working.webp" alt="Team working together" />
         </aside>
       </section>
 

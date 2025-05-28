@@ -8,6 +8,7 @@ import {
   Button,
   Alert,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom"; // ← import this
 
 interface FormState {
   name: string;
@@ -24,6 +25,8 @@ const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const navigate = useNavigate(); // ← initialize navigation
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -35,7 +38,18 @@ const Contact: React.FC = () => {
     setError(null);
 
     try {
-      const res = await fetch("/backend/api/contact.php", {
+      let API_BASE = '';
+      if (window.location.hostname === 'localhost') {
+        if (window.location.port === '9004' || window.location.port === '5173') {
+          API_BASE = '/api';
+        } else {
+          API_BASE = 'http://localhost/Neon/backend/api';
+        }
+      } else {
+        API_BASE = '/backend/api';
+      }
+
+      const res = await fetch(`${API_BASE}/contact.php`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,6 +62,8 @@ const Contact: React.FC = () => {
         throw new Error(data.error || "Server error");
       }
 
+      const responseData = await res.json();
+      console.log("Response:", responseData);
       setSubmitted(true);
     } catch (err: any) {
       console.error("Error submitting message:", err);
@@ -96,9 +112,18 @@ const Contact: React.FC = () => {
           }}
         >
           {submitted ? (
-            <Alert severity="success" sx={{ mt: 2 }}>
-              Thank you for your message! We will get back to you soon.
-            </Alert>
+            <>
+              <Alert severity="success" sx={{ mt: 2, mb: 3 }}>
+                Thank you for your message! We will get back to you soon.
+              </Alert>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => navigate("/")}
+              >
+                Go to Home
+              </Button>
+            </>
           ) : (
             <Box
               component="form"
