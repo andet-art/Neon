@@ -70,7 +70,7 @@
 .about-image img {
   width: 100%;
   height: auto;
-  border-radius: 1.25rem;
+  border-radius: 0.5rem;
   box-shadow: 0 8px 20px rgba(138, 136, 248, 0.2);
   object-fit: cover;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -96,7 +96,7 @@
 .mission-vision > div {
   background: #edeefb; /* light lavender background */
   padding: 3rem 2rem;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   box-shadow: 0 16px 45px rgba(199, 199, 227, 0.6);
   transition: box-shadow 0.4s ease;
   cursor: default;
@@ -145,7 +145,7 @@
 /* Service Card */
 .service-card {
   background: #f4f5ff; /* very light lavender */
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   padding: 2.5rem 2rem;
   box-shadow: 0 6px 18px rgba(138, 136, 248, 0.25);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -207,7 +207,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   text-align: center;
   z-index: 30;
   font-weight: 700;
@@ -329,7 +329,7 @@
   text-align: center;
   background: #f0f1fa;
   padding: 4rem 2rem;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   box-shadow: 0 16px 45px rgba(199, 199, 227, 0.6);
   max-width: 1100px;
   margin-left: auto;
@@ -396,7 +396,7 @@
   text-align: center;
   padding: 4rem 3rem;
   background: #e0e0f8;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   color: #4a4a6a;
 box-shadow: 0 16px 45px rgba(199, 199, 227, 0.6);  user-select: none;
   max-width: 1000px;
@@ -417,7 +417,7 @@ box-shadow: 0 16px 45px rgba(199, 199, 227, 0.6);  user-select: none;
   font-weight: 900;
   font-size: 1.25rem;
   padding: 1.1rem 3rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
   transition: background-color 0.4s ease;

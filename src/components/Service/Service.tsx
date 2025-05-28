@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Box, Typography, Paper, Grid, Collapse } from '@mui/material';
+import { Box, Typography, Paper, Grid, Collapse, Button, Divider, Tooltip } from '@mui/material';
 import WebIcon from '@mui/icons-material/Web';
 import BuildIcon from '@mui/icons-material/Build';
 import MemoryIcon from '@mui/icons-material/Memory';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import SecurityIcon from '@mui/icons-material/Security';
+import DevicesOtherIcon from '@mui/icons-material/DevicesOther';
 import './service.css';
 
 const services = [
@@ -31,6 +34,24 @@ const services = [
     details: "We offer IT consulting, cybersecurity assessments, staff training, and custom automation solutions. Tailored services ensure you meet unique operational goals and growth milestones.",
     icon: <MoreHorizIcon className="service-icon" />
   },
+  {
+    id: 5,
+    title: "24/7 Support",
+    details: "Our dedicated support team is available around the clock to resolve technical issues, answer questions, and provide guidance to keep your business running smoothly.",
+    icon: <SupportAgentIcon className="service-icon" />
+  },
+  {
+    id: 6,
+    title: "Cybersecurity",
+    details: "We offer security audits, firewall setups, phishing prevention training, and network hardening to protect your organization from modern cyber threats.",
+    icon: <SecurityIcon className="service-icon" />
+  },
+  {
+    id: 7,
+    title: "Device Setup",
+    details: "From smart home configurations to enterprise hardware deployments, we ensure seamless integration and optimal setup of your devices.",
+    icon: <DevicesOtherIcon className="service-icon" />
+  }
 ];
 
 const Service = () => {
@@ -51,18 +72,22 @@ const Service = () => {
         Whether you need a new website, software support, hardware repair, or a personalized tech solution, our team is ready to deliver with precision and passion.
       </Typography>
 
+      <Divider variant="middle" sx={{ my: 4 }} />
+
       <Grid container spacing={4} justifyContent="center">
         {services.map(({ id, title, icon, details }) => (
-          <Grid item xs={12} sm={6} md={6} key={id}>
+          <Grid item xs={12} sm={6} md={4} key={id}>
             <Paper
-              elevation={3}
+              elevation={6}
               onMouseEnter={() => setHovered(id)}
               onMouseLeave={() => setHovered(null)}
               className="service-card"
-              sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 3 }}
             >
               <Box className="icon-container">
-                {icon}
+                <Tooltip title={title} arrow>
+                  {icon}
+                </Tooltip>
               </Box>
               <Typography variant="h5" component="h2" gutterBottom color="primary.dark">
                 {title}
@@ -74,10 +99,25 @@ const Service = () => {
                   </Typography>
                 </Box>
               </Collapse>
+              <Button variant="outlined" color="primary" sx={{ mt: 2 }}>
+                Learn More
+              </Button>
             </Paper>
           </Grid>
         ))}
       </Grid>
+
+      <Box mt={6} textAlign="center">
+        <Typography variant="h4" gutterBottom>
+          Still Have Questions?
+        </Typography>
+        <Typography variant="body1" sx={{ maxWidth: '700px', margin: '0 auto 20px' }}>
+          Reach out to us for custom inquiries, quotes, or to schedule a consultation. Our support team is ready to assist you.
+        </Typography>
+        <Button variant="contained" color="secondary" size="large">
+          Contact Us
+        </Button>
+      </Box>
     </Box>
   );
 };
