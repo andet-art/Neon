@@ -22,3 +22,5 @@
 [2025-05-28 18:11:11] Insert successful (ID: 11)
 [2025-05-28 19:00:48] Incoming request: {"name":"gerti","email":"gertirexhepi06@gmail.com","message":"fawfawf"}
 [2025-05-28 19:00:48] Insert successful (ID: 12)
+[2025-05-28 19:38:29] Incoming request: {"name":"gerti","email":"gertirexhepi06@gmail.com","message":"'awdkljadw"}
+[2025-05-28 19:38:30] Insert successful (ID: 13)
