@@ -18,16 +18,18 @@ const Footer = () => {
       sx={{
         mt: 8,
         py: 6,
-        bgcolor: "#1a1a2e", // dark navy background
-        color: "#e0e0f8", // light bluish text
+        bgcolor: "#1a1a2e",
+        color: "#e0e0f8",
         borderRadius: 0,
         px: { xs: 2, sm: 3, md: 4 },
         mx: 0,
         width: "100%",
       }}
     >
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={4}>
+      {/* Grid container must define columns */}
+      <Grid container columns={{ xs: 12, sm: 12, md: 12 }} spacing={4}>
+        {/* Use span instead of item+xs/md/etc. */}
+        <Grid span={{ xs: 12, md: 4 }}>
           <Typography variant="h6" sx={{ fontWeight: "700", mb: 1 }}>
             Neon Tech Solutions
           </Typography>
@@ -36,63 +38,51 @@ const Footer = () => {
             hardware repairs, and software solutions.
           </Typography>
           <Box sx={{ display: "flex", gap: 2, mt: 3 }}>
-            <IconButton
-              size="small"
-              sx={{ color: "#e0e0f8", bgcolor: "rgba(224,224,248,0.1)" }}
-              aria-label="Facebook"
-            >
-              <Facebook fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              sx={{ color: "#e0e0f8", bgcolor: "rgba(224,224,248,0.1)" }}
-              aria-label="Twitter"
-            >
-              <Twitter fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              sx={{ color: "#e0e0f8", bgcolor: "rgba(224,224,248,0.1)" }}
-              aria-label="LinkedIn"
-            >
-              <LinkedIn fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              sx={{ color: "#e0e0f8", bgcolor: "rgba(224,224,248,0.1)" }}
-              aria-label="Instagram"
-            >
-              <Instagram fontSize="small" />
-            </IconButton>
+            {[Facebook, Twitter, LinkedIn, Instagram].map((Icon, i) => (
+              <IconButton
+                key={i}
+                size="small"
+                sx={{
+                  color: "#e0e0f8",
+                  bgcolor: "rgba(224,224,248,0.1)",
+                }}
+              >
+                <Icon fontSize="small" />
+              </IconButton>
+            ))}
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2}>
+        {/* Each column section should use span */}
+        <Grid span={{ xs: 12, sm: 6, md: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
             Services
           </Typography>
           <List dense disablePadding>
-            {["Web Development", "Internet Installation", "Hardware Repairs", "Software Solutions"].map(
-              (service) => (
-                <ListItem key={service} disableGutters disablePadding>
-                  <Button
-                    color="inherit"
-                    sx={{
-                      opacity: 0.8,
-                      textAlign: "left",
-                      justifyContent: "flex-start",
-                      px: 0,
-                    }}
-                  >
-                    {service}
-                  </Button>
-                </ListItem>
-              )
-            )}
+            {[
+              "Web Development",
+              "Internet Installation",
+              "Hardware Repairs",
+              "Software Solutions",
+            ].map((service) => (
+              <ListItem key={service} disableGutters disablePadding>
+                <Button
+                  color="inherit"
+                  sx={{
+                    opacity: 0.8,
+                    textAlign: "left",
+                    justifyContent: "flex-start",
+                    px: 0,
+                  }}
+                >
+                  {service}
+                </Button>
+              </ListItem>
+            ))}
           </List>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2}>
+        <Grid span={{ xs: 12, sm: 6, md: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
             Support
           </Typography>
@@ -117,7 +107,7 @@ const Footer = () => {
           </List>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2}>
+        <Grid span={{ xs: 12, sm: 6, md: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
             Company
           </Typography>
@@ -140,7 +130,7 @@ const Footer = () => {
           </List>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={2}>
+        <Grid span={{ xs: 12, sm: 6, md: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
             Legal
           </Typography>
