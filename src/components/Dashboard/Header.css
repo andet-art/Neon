@@ -1,137 +1,198 @@
+/* -------------------------------------------
+   Root Variables
+-------------------------------------------- */
+:root {
+  --header-height: 100px;
+  --header-bg: #ffffff;
+  --header-border: #e0e0e0;
+  --btn-bg: #f5f5f5;
+  --btn-hover-bg: #e0e0e0;
+  --btn-active-bg: #b0b0b0;
+  --btn-text: #333333;
+  --btn-hover-text: #111111;
+  --btn-active-text: #ffffff;
+  --transition-speed: 0.2s;
+}
+
+/* -------------------------------------------
+   Header Container
+-------------------------------------------- */
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Keep space-between */
-  padding: 0 2rem;
-  background-color: var(--bg-primary);
-  box-shadow: var(--shadow-sm);
-  height: 64px;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 2.5rem;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  /* ↓ make it stick to the viewport top ↓ */
   position: sticky;
   top: 0;
-  z-index: 100;
-  width: 100%;
-  overflow: hidden !important;
+  z-index: 1000; /* stay above page content */
 }
 
+ 
 
+/* -------------------------------------------A
+   Logo Section
+-------------------------------------------- */
 .logo {
   display: flex;
   align-items: center;
   height: 100%;
-  margin-right: 0; /* No right margin */
-  flex: 0 0 auto; /* Don't grow or shrink */
 }
 
 .logo img {
-  height: 40px;
+  height: calc(var(--header-height) * 0.6);
   width: auto;
   object-fit: contain;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  height: 100%;
-  margin-left: auto; /* Push nav to the right */
-  padding-left: 0;
-  flex-grow: 0;
-  overflow: hidden !important;
-  white-space: nowrap;
-  justify-content: flex-end; /* Align items to the end (right) */
-}
-
-/* Add a special class for the first nav link to give it extra spacing if needed */
-.nav-btn:first-child {
-  margin-left: 0; /* Ensure first item starts at the beginning of nav */
-}
-
-.nav-btn {
+/* -------------------------------------------
+   Hamburger Menu Button
+-------------------------------------------- */
+.menu-btn {
+  display: none; /* Hidden on desktop */
   position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem; /* Keep some padding within each button */
-  color: var(--text-primary);
-  font-weight: var(--font-medium);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  white-space: nowrap; /* Prevent text wrapping */
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.nav-btn::after {
-  content: '';
+.menu-btn span,
+.menu-btn::before,
+.menu-btn::after {
+  display: block;
   position: absolute;
-  bottom: 0;
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: var(--primary-color);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  background-color: var(--btn-text);
+  border-radius: 2px;
+  transition: transform var(--transition-speed) ease,
+              top var(--transition-speed) ease,
+              background-color var(--transition-speed) ease,
+              opacity var(--transition-speed) ease;
 }
 
-.nav-btn:hover {
-  color: var(--primary-color);
+/* Top bar */
+.menu-btn::before {
+  content: '';
+  top: 0;
 }
 
-.nav-btn:hover::after {
-  transform: scaleX(1);
+/* Middle bar */
+.menu-btn span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Bottom bar */
+.menu-btn::after {
+  content: '';
+  bottom: 0;
+}
+
+/* Animate into “X” when open */
+.menu-btn.open::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.menu-btn.open span {
+  opacity: 0;
+}
+
+.menu-btn.open::after {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* -------------------------------------------
+   Navigation Menu
+-------------------------------------------- */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------
+   Nav & Logout Buttons
+-------------------------------------------- */
+.nav-btn,
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+  flex: 0 0 auto;
+}
+
+.nav-btn:hover,
+.logout-btn:hover {
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+  transform: translateY(-1px);
 }
 
 .nav-btn.active {
-  color: var(--primary-color);
+  background-color: var(--btn-active-bg);
+  color: var(--btn-active-text);
+  transform: translateY(-1px);
 }
 
-.nav-btn.active::after {
-  transform: scaleX(1);
-}
-
-/* Remove or comment out the profile styles since we're not using it anymore */
-/* 
-.profile {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-  margin-left: auto;
-}
-
-.profile-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--border-color);
-}
-*/
-
-/* Responsive styles */
-@media (max-width: 1024px) {
+/* -------------------------------------------
+   Desktop (width ≥ 768px)
+-------------------------------------------- */
+@media (min-width: 768px) {
+  /* Show nav buttons inline */
   nav {
-    gap: 0.5rem;
+    display: flex !important;
+    flex-direction: row;
   }
-
-  .nav-btn {
-    padding: 0 0.75rem;
-  }
-
-  .brand-name {
+  /* Hide hamburger */
+  .menu-btn {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
-  header {
-    padding: 0 1rem;
+/* -------------------------------------------
+   Mobile (width < 768px)
+-------------------------------------------- */
+@media (max-width: 767px) {
+  /* Show hamburger button */
+  .menu-btn {
+    display: block;
   }
 
+  /* Hide nav by default */
   nav {
     display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
   }
-}
-.container {
-  max-width: 1200px; /* REMOVE THIS IF IT EXISTS */
-  margin: 0 auto;
+  /* When .open class is added: show nav */
+  nav.open {
+    display: flex;
+  }
 }

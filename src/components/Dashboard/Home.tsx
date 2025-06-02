@@ -8,16 +8,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const images = [
-  '/public/slide1.webp',
-  '/public/slide2.jpg',
-  '/public/slide3.png',
+  '/slide1.webp',
+  '/slide2.jpg',
+  '/slide3.png',
 ];
 
 const features = [
   {
     title: 'Real-Time Analytics',
     description: 'Monitor live data with intuitive charts and dashboards.',
-    img: '/assets/analytics.jpg',
+    img: '/assets/analytics.png',
   },
   {
     title: 'Smart Integrations',

@@ -1,6 +1,8 @@
 import React from "react";
 import "./About.css";
 import Footer from "../Footer/Footer";
+import { Link, Navigate } from "react-router-dom";
+
 
 const services = [
   {
@@ -64,7 +66,7 @@ const About: React.FC = () => {
         </article>
 
         <aside className="about-image">
-          <img src="/public/working.webp" alt="Team working together" />
+          <img src="/working.webp" alt="Team working together" />
         </aside>
       </section>
 
@@ -134,7 +136,9 @@ const About: React.FC = () => {
       <section className="cta-section">
         <h2>Ready to work with us?</h2>
         <p>Contact Neon Tech Solutions today and let's build your future together.</p>
-        <button onClick={() => alert("Contact form coming soon!")}>Get in Touch</button>
+        <Link to="/dashboard/contact">
+        <button>Get in Touch</button>
+        </Link>
       </section>
 
       

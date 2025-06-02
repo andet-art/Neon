@@ -5,6 +5,7 @@ import App from './App';
 import './index.css';
 import './fonts.css';
 import './colors.css';
+import { AuthProvider } from './AuthContext';
 
 const root = document.getElementById('root');
 
@@ -14,8 +15,10 @@ if (!root) {
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
+    <AuthProvider>
     <HashRouter>
       <App />
     </HashRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

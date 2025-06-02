@@ -1,3 +1,4 @@
+// src/components/Header/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
@@ -5,6 +6,7 @@ import { images } from '../../assets/images';
 
 const Header: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [navVisible, setNavVisible] = useState<boolean>(false);
   const navigate = useNavigate();
 
   // Utility for NavLink styling
@@ -33,39 +35,46 @@ const Header: React.FC = () => {
 
   // Logout handler
   const handleLogout = () => {
-    console.log('Logging out...'); // Debug line
     fetch('/api/signout.php', {
       method: 'POST',
       credentials: 'include',
     })
       .then(res => res.json())
-      .then(data => {
-        console.log('Logout response:', data); // Inspect server reply
+      .then(() => {
         setIsAuthenticated(false);
-        navigate('/'); // redirect to main page
+        navigate('/');
       })
-      .catch(err => {
-        console.error('Logout error:', err);
+      .catch(() => {
         navigate('/');
       });
   };
 
+  // Toggle nav visibility
+  const toggleNav = () => {
+    setNavVisible(prev => !prev);
+  };
+
   return (
-    <header style={{ justifyContent: 'space-between' }}>
+    <header>
       <div className="logo">
         <NavLink to={isAuthenticated ? '/dashboard/home' : '/'}>
-          <img
-            src={images.logo}
-            alt="Neon Logo"
-            onError={handleImageError}
-          />
+          <img src={images.logo} alt="Neon Logo" onError={handleImageError} />
         </NavLink>
       </div>
 
-      <nav style={{ marginLeft: 'auto', justifyContent: 'flex-end' }}>
-        {/* Always show these navigation links */}
+      {/* Hamburger button */}
+      <button
+        className={`menu-btn${navVisible ? ' open' : ''}`}
+        onClick={toggleNav}
+        aria-label="Toggle navigation"
+      >
+        <span />
+      </button>
+
+      {/* Always render nav; CSS will show/hide based on .open */}
+      <nav className={navVisible ? 'open' : ''}>
         <NavLink to="/dashboard/home" className={isActiveLink}>
-        Home
+          Home
         </NavLink>
         <NavLink to="/dashboard/about" className={isActiveLink}>
           About
@@ -85,22 +94,17 @@ const Header: React.FC = () => {
         <NavLink to="/dashboard/neotel" className={isActiveLink}>
           Neotel
         </NavLink>
-        
-        {/* Show Dashboard link and Logout button only when authenticated */}
+
         {isAuthenticated && (
           <>
             <NavLink to="/dashboard/offers" className={isActiveLink}>
               Dashboard
             </NavLink>
-            <button
-              onClick={handleLogout}
-              className="nav-btn logout-btn"
-            >
+            <button onClick={handleLogout} className="nav-btn logout-btn">
               Logout
             </button>
           </>
         )}
-        {/* No Sign In button - only accessible via URL */}
       </nav>
     </header>
   );
