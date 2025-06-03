@@ -1,198 +1,152 @@
 /* -------------------------------------------
-   Root Variables
+   Base Tokens (Lighter Color Scheme)
 -------------------------------------------- */
+
 :root {
-  --header-height: 100px;
-  --header-bg: #ffffff;
-  --header-border: #e0e0e0;
-  --btn-bg: #f5f5f5;
-  --btn-hover-bg: #e0e0e0;
-  --btn-active-bg: #b0b0b0;
-  --btn-text: #333333;
-  --btn-hover-text: #111111;
-  --btn-active-text: #ffffff;
-  --transition-speed: 0.2s;
+  --bg-lightest: #f8f9fa;
+  --bg-lighter: #ffffff;
+  --primary-blue: #3f51b5;
+  --primary-blue-hover: #5c6bc0;
+  --text-dark: #1a1a2e;
+  --text-muted: #6c757d;
+  --border-light: rgba(0, 0, 0, 0.08);
+  --transition-speed: 0.3s ease;
+  --btn-radius: 0.5rem;
 }
 
 /* -------------------------------------------
    Header Container
 -------------------------------------------- */
-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--header-height);
-  padding: 0 2.5rem;
-  background-color: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-  /* ↓ make it stick to the viewport top ↓ */
+  background-color: var(--bg-lighter);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0 1.5rem;
+  height: 80px;
   position: sticky;
   top: 0;
-  z-index: 1000; /* stay above page content */
+  z-index: 1000;
 }
 
- 
-
-/* -------------------------------------------A
-   Logo Section
+/* -------------------------------------------
+   Logo
 -------------------------------------------- */
 .logo {
   display: flex;
   align-items: center;
-  height: 100%;
 }
 
 .logo img {
-  height: calc(var(--header-height) * 0.6);
-  width: auto;
-  object-fit: contain;
+  height: 60px;
+  transition: transform var(--transition-speed);
+}
+
+.logo img:hover {
+  transform: scale(1.05);
 }
 
 /* -------------------------------------------
-   Hamburger Menu Button
+   Navigation Links
 -------------------------------------------- */
-.menu-btn {
-  display: none; /* Hidden on desktop */
-  position: relative;
-  width: 30px;
-  height: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.menu-btn span,
-.menu-btn::before,
-.menu-btn::after {
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--btn-text);
-  border-radius: 2px;
-  transition: transform var(--transition-speed) ease,
-              top var(--transition-speed) ease,
-              background-color var(--transition-speed) ease,
-              opacity var(--transition-speed) ease;
-}
-
-/* Top bar */
-.menu-btn::before {
-  content: '';
-  top: 0;
-}
-
-/* Middle bar */
-.menu-btn span {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Bottom bar */
-.menu-btn::after {
-  content: '';
-  bottom: 0;
-}
-
-/* Animate into “X” when open */
-.menu-btn.open::before {
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.menu-btn.open span {
-  opacity: 0;
-}
-
-.menu-btn.open::after {
-  bottom: 50%;
-  transform: translateY(50%) rotate(-45deg);
-}
-
-/* -------------------------------------------
-   Navigation Menu
--------------------------------------------- */
-nav {
+.nav {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-left: auto;
-  white-space: nowrap;
 }
 
-/* -------------------------------------------
-   Nav & Logout Buttons
--------------------------------------------- */
-.nav-btn,
-.logout-btn {
+.nav-btn {
+  text-transform: none;
+  color: var(--text-dark);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--btn-radius);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition:
+    background-color var(--transition-speed),
+    color var(--transition-speed),
+    box-shadow var(--transition-speed),
+    border-color var(--transition-speed);
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.6rem 1.2rem;
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  text-decoration: none;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: background-color var(--transition-speed) ease,
-              transform var(--transition-speed) ease;
-  flex: 0 0 auto;
 }
 
-.nav-btn:hover,
-.logout-btn:hover {
-  background-color: var(--btn-hover-bg);
-  color: var(--btn-hover-text);
-  transform: translateY(-1px);
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-blue);
+  border-radius: var(--btn-radius);
+  transition: all var(--transition-speed);
+}
+
+.nav-btn:hover {
+  background-color: var(--bg-lightest);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue-hover);
+  box-shadow: 0 2px 5px rgba(63, 81, 181, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-btn:hover::before {
+  left: 0;
+  width: 100%;
 }
 
 .nav-btn.active {
-  background-color: var(--btn-active-bg);
-  color: var(--btn-active-text);
-  transform: translateY(-1px);
+  background-color: var(--primary-blue);
+  color: var(--bg-lighter);
+  border-color: var(--primary-blue);
+  box-shadow: 0 2px 8px rgba(63, 81, 181, 0.3);
+}
+
+.nav-btn.active::before {
+  left: 0;
+  width: 100%;
 }
 
 /* -------------------------------------------
-   Desktop (width ≥ 768px)
+   Logout Button (same base as .nav-btn)
 -------------------------------------------- */
-@media (min-width: 768px) {
-  /* Show nav buttons inline */
-  nav {
-    display: flex !important;
-    flex-direction: row;
-  }
-  /* Hide hamburger */
-  .menu-btn {
-    display: none;
-  }
+.logout-btn {
+  text-transform: none;
+  color: var(--text-dark);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--btn-radius);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition:
+    background-color var(--transition-speed),
+    color var(--transition-speed),
+    box-shadow var(--transition-speed),
+    border-color var(--transition-speed);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.logout-btn:hover {
+  background-color: var(--bg-lightest);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue-hover);
+  box-shadow: 0 2px 5px rgba(63, 81, 181, 0.2);
+  transform: translateY(-2px);
 }
 
 /* -------------------------------------------
-   Mobile (width < 768px)
+   Responsive: Collapse nav on small screens
 -------------------------------------------- */
 @media (max-width: 767px) {
-  /* Show hamburger button */
-  .menu-btn {
-    display: block;
-  }
-
-  /* Hide nav by default */
-  nav {
+  .nav {
     display: none;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-  /* When .open class is added: show nav */
-  nav.open {
-    display: flex;
   }
 }

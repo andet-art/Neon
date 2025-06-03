@@ -1,12 +1,12 @@
-// src/components/Header/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
+
 import { images } from '../../assets/images';
 
 const Header: React.FC = () => {
+  
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [navVisible, setNavVisible] = useState<boolean>(false);
   const navigate = useNavigate();
 
   // Utility for NavLink styling
@@ -35,44 +35,37 @@ const Header: React.FC = () => {
 
   // Logout handler
   const handleLogout = () => {
+    console.log('Logging out...'); // Debug line
     fetch('/api/signout.php', {
       method: 'POST',
       credentials: 'include',
     })
       .then(res => res.json())
-      .then(() => {
+      .then(data => {
+        console.log('Logout response:', data); // Inspect server reply
         setIsAuthenticated(false);
-        navigate('/');
+        navigate('/'); // redirect to main page
       })
-      .catch(() => {
+      .catch(err => {
+        console.error('Logout error:', err);
         navigate('/');
       });
   };
 
-  // Toggle nav visibility
-  const toggleNav = () => {
-    setNavVisible(prev => !prev);
-  };
-
   return (
-    <header>
+    <header className="header">
       <div className="logo">
         <NavLink to={isAuthenticated ? '/dashboard/home' : '/'}>
-          <img src={images.logo} alt="Neon Logo" onError={handleImageError} />
+          <img
+            src={images.logo}
+            alt="Neon Logo"
+            onError={handleImageError}
+          />
         </NavLink>
       </div>
 
-      {/* Hamburger button */}
-      <button
-        className={`menu-btn${navVisible ? ' open' : ''}`}
-        onClick={toggleNav}
-        aria-label="Toggle navigation"
-      >
-        <span />
-      </button>
-
-      {/* Always render nav; CSS will show/hide based on .open */}
-      <nav className={navVisible ? 'open' : ''}>
+      <nav className="nav">
+        {/* Always show these navigation links */}
         <NavLink to="/dashboard/home" className={isActiveLink}>
           Home
         </NavLink>
@@ -95,6 +88,7 @@ const Header: React.FC = () => {
           Neotel
         </NavLink>
 
+        {/* Show Dashboard link and Logout button only when authenticated */}
         {isAuthenticated && (
           <>
             <NavLink to="/dashboard/offers" className={isActiveLink}>
@@ -105,6 +99,7 @@ const Header: React.FC = () => {
             </button>
           </>
         )}
+        {/* No Sign In button - only accessible via URL */}
       </nav>
     </header>
   );
