@@ -28,10 +28,10 @@ const services = [
 ];
 
 const teamMembers = [
-  { name: "Andet Fejzuli", role: "CEO & Founder", image: "/images/team/andet.jpg" },
-  { name: "Elira Shala", role: "Lead Developer", image: "/images/team/elira.jpg" },
-  { name: "Blerim Arifi", role: "Project Manager", image: "/images/team/blerim.jpg" },
-  { name: "Arta Kastrati", role: "UX/UI Designer", image: "/images/team/arta.jpg" },
+  { name: "Sheval Latifi", role: "CEO & Founder", image: "/profile1.webp" },
+  { name: "Elira Shala", role: "Lead Developer", image: "/profile1.webp" },
+  { name: "Blerim Arifi", role: "Project Manager", image: "/profile1.webp" },
+  { name: "Arta Kastrati", role: "UX/UI Designer", image: "/profile1.webp" },
 ];
 
 const testimonials = [

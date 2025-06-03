@@ -78,7 +78,7 @@
 }
 
 .about-image img:hover {
-  transform: scale(1.05) rotate(0.5deg);
+  transform: scale(1.05) ;
   box-shadow: 0 14px 30px rgba(138, 136, 248, 0.4);
 }
 
@@ -302,7 +302,7 @@
 }
 
 .team-member img:hover {
-  transform: scale(1.1) rotate(3deg);
+  transform: scale(1.1) ;
   box-shadow: 0 12px 35px rgba(138, 136, 248, 0.45);
 }
 

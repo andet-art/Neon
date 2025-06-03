@@ -2,6 +2,7 @@ import React from 'react';
 import './Categories.css';
 import Footer from '../Footer/Footer';
 import { FaRocket, FaCogs, FaLightbulb } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const categories = [
   {
@@ -54,7 +55,9 @@ const Categories: React.FC = () => {
             </div>
             <div className="category-extra-info">
               <p>{category.extraInfo}</p>
+              <Link to="/dashboard/service">
               <button>Learn More</button>
+              </Link>
             </div>
           </div>
         ))}
