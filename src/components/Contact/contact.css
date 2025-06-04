@@ -1,51 +1,152 @@
-/* Contact.css */
+/* contact.css */
 
+/* ──────────────────────────────────────────────────────────────────
+   Container & Typography
+────────────────────────────────────────────────────────────────── */
 .contact-container {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  text-align: center;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
-  flex: 1;
-  width: 100%;
-  min-height: 100vh;
-  padding: 16px;
 }
 
 .contact-title {
-  text-align: center;
-  color: #1976d2; /* MUI primary blue */
-  margin-bottom: 16px;
+    font-size: 2.8rem;
+  font-weight: 800;
+  color: #4a4a6a;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(138, 136, 248, 0.15);
 }
 
-.contact-center-box {
+/* (Optional) If you ever add a subtitle below the title: */
+.contact-subtitle {
+  font-size: 1.25rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Paper/Card Wrapper
+────────────────────────────────────────────────────────────────── */
+.contact-paper-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
+  margin-top: 0rem !important; /* give a bit of breathing room under the title */
 }
 
-.contact-paper {
-  padding: 32px;
+/* ──────────────────────────────────────────────────────────────────
+   The “Card” itself
+────────────────────────────────────────────────────────────────── */
+.contact-card {
+  background: #f4f5ff;
+  color: #1f1f3d;               /* dark navy */
+  border-radius: 0.5rem !important;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 8px 24px rgba(115, 108, 255, 0.25);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
   width: 100%;
-  max-width: 600px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 340px;
+  transform-origin: center;
+  will-change: transform, box-shadow;
+  margin-bottom: 4rem;
 }
 
+
+
+/* ──────────────────────────────────────────────────────────────────
+   Form & Inputs
+────────────────────────────────────────────────────────────────── */
+/* Stacks the form fields with consistent gaps */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
-.go-home-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
+/* Ensure TextField (MUI) spans full width and looks cohesive */
+.contact-input {
+  width: 100%;
 }
 
-.go-home-button {
-  font-size: 1.25rem;
-  padding: 16px 48px;
-  border-radius: 8px;
+/* Slightly restyle the inner <input> and <textarea> for consistency */
+.contact-input .MuiInputBase-root {
+  border-radius: 0.5rem;
+}
+
+.contact-input .MuiOutlinedInput-input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* If you want to adjust label colors when focusing: */
+.contact-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #6c63ff;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Alerts
+────────────────────────────────────────────────────────────────── */
+/* Adds extra bottom margin to both success/error alerts */
+.contact-alert {
+  margin-bottom: 1.5rem;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Submit Button
+────────────────────────────────────────────────────────────────── */
+/* Use a <button class="contact-button"> … </button> rather than MUI <Button> */
+.contact-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #1a237e;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.5rem !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #5848e5;
+  transform: translateY(-2px);
+}
+
+/* If you ever use a disabled state: */
+.contact-button:disabled {
+  background-color: #b3aaff;
+  cursor: not-allowed;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Responsive tweaks (optional)
+────────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+  }
+
+  .contact-button {
+    width: 100%;
+    text-align: center;
+  }
 }

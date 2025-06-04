@@ -1,14 +1,7 @@
 // src/components/Contact.tsx
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Paper,
-  TextField,
-  Button,
-  Alert,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom"; // ← import this
+import { useNavigate } from "react-router-dom";
+import "./contact.css";
 
 interface FormState {
   name: string;
@@ -25,7 +18,7 @@ const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const navigate = useNavigate(); // ← initialize navigation
+  const navigate = useNavigate();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -38,15 +31,18 @@ const Contact: React.FC = () => {
     setError(null);
 
     try {
-      let API_BASE = '';
-      if (window.location.hostname === 'localhost') {
-        if (window.location.port === '9004' || window.location.port === '5173') {
-          API_BASE = '/api';
+      let API_BASE = "";
+      if (window.location.hostname === "localhost") {
+        if (
+          window.location.port === "9004" ||
+          window.location.port === "5173"
+        ) {
+          API_BASE = "/api";
         } else {
-          API_BASE = 'http://localhost/Neon/backend/api';
+          API_BASE = "http://localhost/Neon/backend/api";
         }
       } else {
-        API_BASE = '/backend/api';
+        API_BASE = "/backend/api";
       }
 
       const res = await fetch(`${API_BASE}/contact.php`, {
@@ -72,126 +68,104 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        bgcolor: "#f5f5f5",
-        flex: 1,
-        width: "100%",
-        minHeight: "100vh",
-        p: 2,
-      }}
-    >
-      <Typography
-        variant="h3"
-        component="h1"
-        gutterBottom
-        align="center"
-        color="primary"
-      >
-        Contact Us
-      </Typography>
+    <div className="contact-container">
+      <h1 className="contact-title">Contact Us</h1>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flex: 1,
-        }}
-      >
-        <Paper
-          sx={{
-            p: 4,
-            width: "100%",
-            maxWidth: "600px",
-            bgcolor: "white",
-            borderRadius: 2,
-            boxShadow: 1,
-          }}
-        >
+      <div className="contact-paper-wrapper">
+        <div className="contact-card">
           {submitted ? (
             <>
-              <Alert severity="success" sx={{ mt: 2, mb: 3 }}>
+              <div
+                className="contact-alert"
+                style={{
+                  backgroundColor: "#d4edda",
+                  color: "#155724",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "0.25rem",
+                }}
+              >
                 Thank you for your message! We will get back to you soon.
-              </Alert>
-              <Button
-                variant="contained"
-                color="primary"
+              </div>
+              <button
                 onClick={() => navigate("/")}
+                className="contact-button"
               >
                 Go to Home
-              </Button>
+              </button>
             </>
           ) : (
-            <Box
-              component="form"
-              onSubmit={handleSubmit}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 3,
-              }}
-            >
+            <form onSubmit={handleSubmit} className="contact-form">
               {error && (
-                <Alert severity="error" sx={{ mb: 2 }}>
+                <div
+                  className="contact-alert"
+                  style={{
+                    backgroundColor: "#f8d7da",
+                    color: "#721c24",
+                    padding: "0.75rem 1rem",
+                    borderRadius: "0.25rem",
+                  }}
+                >
                   {error}
-                </Alert>
+                </div>
               )}
 
-              <TextField
-                fullWidth
-                label="Name"
+              <input
+                className="contact-input"
+                type="text"
                 name="name"
+                placeholder="Name"
                 value={form.name}
                 onChange={handleChange}
                 required
-                variant="outlined"
+                style={{
+                  padding: "0.75rem 1rem",
+                  fontSize: "1rem",
+                  borderRadius: "0.5rem",
+                  border: "1px solid #ccc",
+                }}
               />
 
-              <TextField
-                fullWidth
-                label="Email"
-                name="email"
+              <input
+                className="contact-input"
                 type="email"
+                name="email"
+                placeholder="Email"
                 value={form.email}
                 onChange={handleChange}
                 required
-                variant="outlined"
+                style={{
+                  padding: "0.75rem 1rem",
+                  fontSize: "1rem",
+                  borderRadius: "0.5rem",
+                  border: "1px solid #ccc",
+                }}
               />
 
-              <TextField
-                fullWidth
-                label="Message"
+              <textarea
+                className="contact-input"
                 name="message"
-                multiline
+                placeholder="Message"
                 rows={4}
                 value={form.message}
                 onChange={handleChange}
                 required
-                variant="outlined"
+                style={{
+                  padding: "0.75rem 1rem",
+                  fontSize: "1rem",
+                  borderRadius: "0.5rem",
+                  border: "1px solid #ccc",
+                  resize: "vertical",
+                }}
               />
 
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                size="large"
-                sx={{
-                  mt: 2,
-                  py: 1.5,
-                  px: 4,
-                  alignSelf: "flex-start",
-                }}
-              >
+              <button type="submit" className="contact-button">
                 Send Message
-              </Button>
-            </Box>
+              </button>
+            </form>
           )}
-        </Paper>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 
