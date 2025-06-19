@@ -7,7 +7,7 @@ export default defineConfig({
     port: 9004,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080/Neon/backend',
+        target: 'http://localhost/Neon/backend',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '/api')
