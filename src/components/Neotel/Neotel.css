@@ -110,7 +110,12 @@
   background: linear-gradient(135deg, #e8eaf6, #c5cae9);
   position: relative;
 }
-
+.package-deals{
+  display: block;
+  font-size: 14px;
+  color: #757575;
+  margin-top: 15px;
+}
 .package-header h3 {
   margin: 0;
   font-size: 22px;

@@ -9,6 +9,8 @@ interface InternetPackage {
   price: string;
   promo: string | null;
   features: string[];
+  deals: string;
+
 }
 
 interface NeotelProps {
@@ -25,27 +27,34 @@ const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = []
   const defaultOptickiPaketi: InternetPackage[] = [
     {
       id: 1,
-      name: "Fiber Basic",
-      speed: "100/100 Mbps",
-      price: "999 ден",
+      name: "Fiber 50",
+      speed: "50/50 Mbps",
+      deals:"Договор на 2 години	",
+      price: "890 ден.",
       promo: null,
-      features: ["Неограничен интернет", "WiFi рутер", "Бесплатна инсталација"]
+      features: ["Неограничен интернет", "WiFi рутер", "Бесплатна инсталација"],
+           
+
     },
     {
       id: 2,
-      name: "Fiber Pro",
-      speed: "300/300 Mbps",
-      price: "1299 ден",
-      promo: "1099 ден",
-      features: ["Неограничен интернет", "WiFi 6 рутер", "Бесплатна инсталација", "24/7 поддршка"]
+      name: "Fiber 100",
+      speed: "100/100 Mbps",
+      price: "1.190 ден.",
+      promo: "1.099 ден",
+            deals:"Договор на 2 години	",
+
+      features: ["Неограничен интернет", "WiFi 6 рутер",  "24/7 поддршка"]
     },
     {
       id: 3,
-      name: "Fiber Ultra",
-      speed: "500/500 Mbps",
-      price: "1599 ден",
+      name: "Fiber 300",
+      speed: "300/300 Mbps",
+      price: "1.790 ден",
       promo: null,
-      features: ["Неограничен интернет", "Премиум WiFi 6 рутер", "Приоритетна техничка поддршка", "Статичка IP адреса"]
+      deals:"Договор на 2 години	",
+
+      features: ["Неограничен интернет",  "Приоритетна техничка поддршка", "Статичка IP адреса"]
     },
   ];
 
@@ -53,27 +62,33 @@ const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = []
   const defaultOstanatiPaketi: InternetPackage[] = [
     {
       id: 1,
-      name: "ADSL Standard",
-      speed: "20/1 Mbps",
+      name: "Net 20",
+      speed: "20 Mbps / 2 Mbps",
       price: "799 ден",
-      promo: "699 ден",
-      features: ["Неограничен интернет", "Основен рутер", "Техничка поддршка"]
+      promo: "690 ден",
+      deals:"Договор на 2 години",
+
+      features: ["Неограничен интернет", "Основен рутер", "Безжичен интернет"]
     },
     {
       id: 2,
-      name: "VDSL Plus",
-      speed: "50/10 Mbps",
-      price: "999 ден",
+      name: "Net 30",
+      speed: "30 Mbps / 3 Mbps",
+      price: "790 ден.",
       promo: null,
-      features: ["Неограничен интернет", "Напреден рутер", "Техничка поддршка", "Антивирус заштита"]
+      deals:"Договор на 2 години",
+
+      features: ["Неограничен интернет", "Напреден рутер", "Безжичен интернет", "Антивирус заштита"]
     },
     {
       id: 3,
-      name: "4G Mobile",
-      speed: "до 50 Mbps",
-      price: "1199 ден",
-      promo: "999 ден",
-      features: ["100GB месечно", "4G рутер", "Флексибилна локација", "Брза активација"]
+      name: "Net 50/10",
+      speed: "50 Mbps / 10 Mbps",
+      price: "1.199 ден",
+      promo: "1.090ден ",
+      deals:"Договор на 2 години",
+
+      features: ["100GB месечно", "4G рутер", "Безжичен интернет", "Брза активација"]
     },
   ];
 
@@ -144,6 +159,7 @@ const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = []
                   <div className="package-header">
                     <h3>{paket.name}</h3>
                     <div className="speed-badge">{paket.speed}</div>
+                    <div className="package-deals">{paket.deals}</div>
                   </div>
                   
                   <div className="package-pricing">
@@ -185,6 +201,8 @@ const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = []
                   <div className="package-header">
                     <h3>{paket.name}</h3>
                     <div className="speed-badge">{paket.speed}</div>
+                    <div className="package-deals">{paket.deals}</div>
+
                   </div>
                   
                   <div className="package-pricing">
