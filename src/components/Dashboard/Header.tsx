@@ -91,7 +91,7 @@ const Header: React.FC = () => {
       <nav className={'nav' + (menuOpen ? ' open' : '')}>
 
         {/* Always show these navigation links */}
-        <NavLink to="/dashboard/home" className={isActiveLink} onClick={handleLinkClick}>
+        <NavLink to="/dashboard/home" className={({ isActive }) => isActive ? 'nav-btn active' : 'nav-btn'}onClick={handleLinkClick}>
           Home
         </NavLink>
         <NavLink to="/dashboard/about" className={isActiveLink} onClick={handleLinkClick}>

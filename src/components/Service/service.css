@@ -12,7 +12,13 @@
   margin: 0 auto;
   padding: 4rem 3rem;
 }
-
+.service-intro-image {
+  margin-top: -270px;
+  width: 300px;
+  margin-left: 200px;
+  box-shadow: 0 10px 30px rgba(138, 136, 248, 0.3);
+         /* puts image behind other content */
+}
 /* Section Title */
 .service-title-main {
   font-size: 4.25rem;           /* bigger title */
@@ -49,6 +55,7 @@
   font-weight: 500;
   color: #4a4a6a;               /* darker grey-blue */
   line-height: 1.9;
+  margin-right: 600px;
   max-width: 600px;
   margin: 0 auto 0 35rem;      /* centered width with left margin */
   align-items: center;

@@ -10,7 +10,7 @@
   --transition-speed: 0.3s;
   --btn-radius: 9px;
 }
-
+ 
 .home-container {
   background: var(--primary-bg);
   color: var(--text-color-dark);
@@ -24,7 +24,26 @@
 .slide-wrapper {
   overflow: hidden;
 }
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
+.custom-arrow.left {
+  left: 1rem;
+}
+
+.custom-arrow.right {
+  right: 1rem;
+}
 .slide-image {
   width: 100%;
   height: 60vh;
@@ -37,10 +56,32 @@
   transform: scale(1.04);
   filter: brightness(1.08) saturate(1.1);
 }
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 2rem; /* Size of the arrow icon */
+  color: var(--accent-color); /* Or any color you want */
+  background: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  line-height: 1; /* Ensures the icon is vertically centered */
+}
 
-/* Customize slick dots */
-.slick-dots {
-  bottom: 16px;
+.custom-arrow.left {
+  left: 1rem;
+}
+
+.custom-arrow.right {
+  right: 1rem;
+}
+
+.custom-arrow:hover {
+  color: var(--accent-hover); /* Optional hover effect */
 }
 
 .slick-dots li button:before {

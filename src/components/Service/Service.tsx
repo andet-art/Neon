@@ -19,7 +19,7 @@ import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 import "./service.css";
 import { ForkLeft } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
+import "/service.jpg"
 const services = [
   {
     id: 1,
@@ -49,20 +49,8 @@ const services = [
       "We offer IT consulting, cybersecurity assessments, staff training, and custom automation solutions. Tailored services ensure you meet unique operational goals and growth milestones.",
     icon: <MoreHorizIcon className="service-icon" />,
   },
-  {
-    id: 5,
-    title: "24/7 Support",
-    details:
-      "Our dedicated support team is available around the clock to resolve technical issues, answer questions, and provide guidance to keep your business running smoothly.",
-    icon: <SupportAgentIcon className="service-icon" />,
-  },
-  {
-    id: 6,
-    title: "Cybersecurity",
-    details:
-      "We offer security audits, firewall setups, phishing prevention training, and network hardening to protect your organization from modern cyber threats.",
-    icon: <SecurityIcon className="service-icon" />,
-  },
+
+
   {
     id: 7,
     title: "Device Setup",
@@ -82,7 +70,6 @@ const Service = () => {
         marginLeft:"18rem",
         marginBottom: "2rem",
       }}>Explore Our Comprehensive Service Offerings</h2>
-
       <p>
         Our expert solutions are tailored to empower businesses and individuals with reliable, innovative, and secure technology services.
       </p>
@@ -92,6 +79,7 @@ const Service = () => {
       }}>
         Whether you need a new website, software support, hardware repair, or a personalized tech solution, our team is ready to deliver with precision and passion.
       </p>
+      <img src="/service.jpg" alt="Service Intro" className="service-intro-image" />
 
       <Divider className="service-divider" />
 

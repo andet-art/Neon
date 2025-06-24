@@ -29,6 +29,7 @@ const App: React.FC = () => {
         <Route path="shop" element={<Shop />} />
         <Route path="offers" element={<Offers offers={offersData} />} />
         <Route path="neotel" element={<Neotel />} />
+        <Route path="home" element={<Home/>}/>
       </Route>
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>

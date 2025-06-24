@@ -2,10 +2,30 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import './home.css'; // updated
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './home.css'; // updated
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+const NextArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <div className="custom-arrow right" onClick={onClick}>
+      <FaArrowRight />
+    </div>
+  );
+};
+
+const PrevArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <div className="custom-arrow left" onClick={onClick}>
+      <FaArrowLeft />
+    </div>
+  );
+};
 
 const images = [
   '/slide1.webp',
@@ -69,15 +89,15 @@ const faqs = [
 
 const Home: React.FC = () => {
   const sliderSettings = {
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    speed: 700,
-    autoplaySpeed: 4000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  };
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  prevArrow: <PrevArrow />,
+  nextArrow: <NextArrow />,
+};
 
   return (
     <main className="home-container">
