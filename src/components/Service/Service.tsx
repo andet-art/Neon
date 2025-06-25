@@ -20,42 +20,47 @@ import "./service.css";
 import { ForkLeft } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "/service.jpg"
+import { Outlet } from "react-router-dom";
+
 const services = [
   {
     id: 1,
     title: "Making Webpages",
+    route: "/dashboard/webpages",
     details:
-      "We design sleek, SEO-optimized websites using modern frameworks like React and Next.js, customized to your branding and goals. We ensure full responsiveness, accessibility, and performance best practices for better user engagement.",
+      "We design sleek, SEO-optimized websites using modern frameworks like React and Next.js...",
     icon: <WebIcon className="service-icon" />,
   },
   {
     id: 2,
     title: "Software Maintenance",
+    route: "/dashboard/software-maintenance",
     details:
-      "Our team provides long-term software lifecycle support, including proactive monitoring, patching vulnerabilities, improving UX, and upgrading libraries to ensure stability and longevity.",
+      "Our team provides long-term software lifecycle support...",
     icon: <BuildIcon className="service-icon" />,
   },
   {
     id: 3,
     title: "Hardware Fixing",
+    route: "/dashboard/hardware-maintenance",
     details:
-      "We handle everything from component-level diagnostics to upgrades, thermal optimization, and preventative care. Our skilled technicians ensure your systems remain reliable and efficient.",
+      "We handle everything from component-level diagnostics to upgrades...",
     icon: <MemoryIcon className="service-icon" />,
   },
   {
     id: 4,
     title: "Other Services",
+    route: "/dashboard/other",
     details:
-      "We offer IT consulting, cybersecurity assessments, staff training, and custom automation solutions. Tailored services ensure you meet unique operational goals and growth milestones.",
+      "We offer IT consulting, cybersecurity assessments, staff training...",
     icon: <MoreHorizIcon className="service-icon" />,
   },
-
-
   {
     id: 7,
     title: "Device Setup",
+    route: "/dashboard/service/devices",
     details:
-      "From smart home configurations to enterprise hardware deployments, we ensure seamless integration and optimal setup of your devices.",
+      "From smart home configurations to enterprise hardware deployments...",
     icon: <DevicesOtherIcon className="service-icon" />,
   },
 ];
@@ -84,38 +89,42 @@ const Service = () => {
       <Divider className="service-divider" />
 
       <Grid container spacing={4} justifyContent="center" className="services-grid">
-        {services.map(({ id, title, icon, details }) => (
-          <Grid item xs={12} sm={6} md={4} key={id}>
-            <Paper
-              elevation={6}
-              className="service-card"
-              onMouseEnter={() => setHovered(id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <Box className="icon-container">
-                <Tooltip title={title} arrow>
-                  {icon}
-                </Tooltip>
-              </Box>
+        {services.map(({ id, title, icon, details, route }) => (
+  <Grid item xs={12} sm={6} md={4} key={id}>
+    <Paper
+      elevation={6}
+      className="service-card"
+      onMouseEnter={() => setHovered(id)}
+      onMouseLeave={() => setHovered(null)}
+    >
+      <Box className="icon-container">
+        <Tooltip title={title} arrow>
+          {icon}
+        </Tooltip>
+      </Box>
 
-              <Typography className="service-card-title" component="h2" gutterBottom>
-                {title}
-              </Typography>
+      <Typography className="service-card-title" component="h2" gutterBottom>
+        {title}
+      </Typography>
 
-              <Collapse in={hovered === id}>
-                <Box className="hover-details">
-                  <Typography variant="body2" color="textSecondary">
-                    {details}
-                  </Typography>
-                </Box>
-              </Collapse>
+      <Collapse in={hovered === id}>
+        <Box className="hover-details">
+          <Typography variant="body2" color="textSecondary">
+            {details}
+          </Typography>
+        </Box>
+      </Collapse>
 
-              <Button className="service-card-button">
-                Learn More
-              </Button>
-            </Paper>
-          </Grid>
-        ))}
+      <Link to={route} style={{ textDecoration: "none" }}>
+        <Button className="service-card-button">
+          Learn More
+        </Button>
+      </Link>
+    </Paper>
+  </Grid>
+))}
+
+       
       </Grid>
 
       <Box className="service-contact">
@@ -143,8 +152,10 @@ const Service = () => {
         }}>
           Contact Us
         </Button>
+              
         </Link>
       </Box>
+<Outlet/>
     </Box>
   );
 };

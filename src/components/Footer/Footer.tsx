@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -10,6 +11,12 @@ import {
   Divider,
 } from "@mui/material";
 import { Facebook, Twitter, LinkedIn, Instagram } from "@mui/icons-material";
+const supportLinks = [
+  {label: "Contact Us", to: "/dashboard/contact"},
+  {label: "Technical support",to:"/dashboard/service"},
+  {label: "Network status",to:"/dashboard/contact"}
+  
+];
 
 const Footer = () => {
   return (
@@ -52,7 +59,7 @@ const Footer = () => {
             ))}
           </Box>
         </Grid>
-
+ 
         {/* Each column section should use span */}
         <Grid span={{ xs: 12, sm: 6, md: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
@@ -82,37 +89,38 @@ const Footer = () => {
           </List>
         </Grid>
 
-        <Grid span={{ xs: 12, sm: 6, md: 2 }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
-            Support
-          </Typography>
-          <List dense disablePadding>
-            {["Contact Us", "FAQs", "Technical Support", "Network Status"].map(
-              (item) => (
-                <ListItem key={item} disableGutters disablePadding>
-                  <Button
-                    color="inherit"
-                    sx={{
-                      opacity: 0.8,
-                      textAlign: "left",
-                      justifyContent: "flex-start",
-                      px: 0,
-                    }}
-                  >
-                    {item}
-                  </Button>
-                </ListItem>
-              )
-            )}
-          </List>
-        </Grid>
+      <Grid item xs={12} sm={6} md={2}>
+        <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
+          Support
+        </Typography>
+        <List dense disablePadding>
+          {supportLinks.map(({ label, to }) => (
+            <ListItem key={label} disableGutters disablePadding>
+              <Button
+                component={RouterLink}
+                to={to}
+                color="inherit"
+                sx={{
+                  opacity: 0.8,
+                  textAlign: "left",
+                  justifyContent: "flex-start",
+                  px: 0,
+                  textTransform: "none", // optional: keeps normal casing
+                }}
+              >
+          {label}
+              </Button>
+            </ListItem>
+           ))}
+        </List>
+      </Grid>
 
         <Grid span={{ xs: 12, sm: 6, md: 2 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: "600", mb: 1 }}>
             Company
           </Typography>
           <List dense disablePadding>
-            {["About Us", "Careers", "News", "Sustainability"].map((item) => (
+           {["About Us", "Careers", "News", "Sustainability"].map((item) => (
               <ListItem key={item} disableGutters disablePadding>
                 <Button
                   color="inherit"

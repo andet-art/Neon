@@ -1,0 +1,158 @@
+/* src/components/Service/SoftwareMaintenance.css */
+
+.software-maintenance {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a237e;
+  background: #f9faff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(57, 73, 171, 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+.software-maintenance:hover {
+  box-shadow: 0 12px 30px rgba(57, 73, 171, 0.2);
+}
+
+.maintenance-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #16266b;
+  letter-spacing: 0.05em;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #3949ab;
+  max-width: 720px;
+  margin: 0.8rem auto 1.5rem auto;
+  text-align: center;
+  font-weight: 500;
+}
+
+.maintenance-benefits {
+  background: white;
+  max-width: 720px;
+  margin: 2rem auto 3rem auto;
+  padding: 2.5rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(57, 73, 171, 0.1);
+  border: 1px solid #d3d9ff;
+  transition: transform 0.3s ease;
+}
+
+.maintenance-benefits:hover {
+  transform: translateY(-5px);
+}
+
+.maintenance-benefits h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 1.3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.maintenance-benefits ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.15rem;
+  color: #3949ab;
+  line-height: 1.8;
+}
+
+.benefit-item {
+  margin-bottom: 1rem;
+  padding-left: 2.8rem;
+  position: relative;
+  cursor: default;
+  transition: color 0.3s ease;
+  outline-offset: 4px;
+}
+
+.benefit-item:focus,
+.benefit-item:hover {
+  color: #16266b;
+  background: #e3e7ff;
+  border-radius: 8px;
+  outline: none;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1.6rem;
+  color: #1a237e;
+  font-weight: 900;
+  user-select: none;
+}
+
+.maintenance-footer {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem auto;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #1a237e;
+}
+
+.contact-button {
+  margin-top: 1.8rem;
+  background: linear-gradient(135deg, #3949ab, #1a237e);
+  color: #fff;
+  padding: 14px 42px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(57, 73, 171, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-button:hover,
+.contact-button:focus {
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  transform: scale(1.05);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .software-maintenance {
+    margin: 2rem 1rem;
+    padding: 1rem 1rem;
+  }
+
+  .maintenance-header h2 {
+    font-size: 2rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+
+  .maintenance-benefits {
+    padding: 1.8rem 1rem;
+  }
+
+  .maintenance-benefits h3 {
+    font-size: 1.5rem;
+  }
+
+  .maintenance-footer {
+    font-size: 1.1rem;
+  }
+
+  .contact-button {
+    padding: 12px 32px;
+    font-size: 1rem;
+  }
+}

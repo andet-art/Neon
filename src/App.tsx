@@ -10,11 +10,14 @@ import Shop from "./components/Shop/Shop";
 import Offers from "./components/Offers/Offers";
 import Neotel from "./components/Neotel/Neotel";
 import SignIn from "./components/SignIn";
-
+import WebPages from "./components/Service/WebPages";
+import SoftwareMaintenance from "./components/Service/SoftwareMaintenance";
+import Hardware from "./components/Service/Hardware";
+import Other from "./components/Service/other";
 const offersData = [
   // your offers here
 ];
-
+ 
 const App: React.FC = () => {
   return (
     <Routes>
@@ -24,16 +27,26 @@ const App: React.FC = () => {
         <Route index element={<Home />} /> {/* <-- Home as index */}
         <Route path="categories" element={<Categories />} />
         <Route path="about" element={<About />} />
-        <Route path="service" element={<Service />} />
+        <Route path="service" element={<Service />}/>
+        <Route path="software-maintenance" element={<SoftwareMaintenance/>}/>
+        <Route path="webpages" element={<WebPages />}/>
+        <Route path="hardware-maintenance" element={<Hardware />}/>
+        <Route path="other" element={<Other />}/>
+
         <Route path="contact" element={<Contact />} />
         <Route path="shop" element={<Shop />} />
         <Route path="offers" element={<Offers offers={offersData} />} />
         <Route path="neotel" element={<Neotel />} />
         <Route path="home" element={<Home/>}/>
+
       </Route>
+      
+      
+      {/* fallback */}
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
 };
+
 
 export default App;

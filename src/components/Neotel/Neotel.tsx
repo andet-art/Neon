@@ -105,7 +105,7 @@ const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = []
       setLocalOstanatiPaketi(JSON.parse(savedOstanati));
     }
   }, []);
-
+ 
   // Determine which packages to display with priority:
   // 1. Props (if provided)
   // 2. localStorage (if available)
@@ -124,26 +124,20 @@ const Neotel: React.FC<NeotelProps> = ({ optickiPaketi = [], ostanatiPaketi = []
 
   return (
     <div className="neotel-container">
-      <div className="neotel-header">
-        <h1>Neotel Интернет</h1>
-        <p>Брз и сигурен интернет за вашиот дом и бизнис</p>
-      </div>
-
-      <div className="sliding-navbar">
-        <button
-          className={activeTab === "opticki" ? "active" : ""}
-          onClick={() => setActiveTab("opticki")}
-        >
-          Оптички интернет
-        </button>
-        <button
-          className={activeTab === "ostanati" ? "active" : ""}
-          onClick={() => setActiveTab("ostanati")}
-        >
-          Останати пакети
-        </button>
-        <div className={`slider ${activeTab}`}></div>
-      </div>
+      <div className="tab-navbar">
+  <button
+    className={activeTab === "opticki" ? "tab-button active" : "tab-button"}
+    onClick={() => setActiveTab("opticki")}
+  >
+    Оптички интернет
+  </button>
+  <button
+    className={activeTab === "ostanati" ? "tab-button active" : "tab-button"}
+    onClick={() => setActiveTab("ostanati")}
+  >
+    Останати пакети
+  </button>
+</div>
 
       <div className="tab-content">
         {activeTab === "opticki" && (

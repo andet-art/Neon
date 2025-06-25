@@ -1,0 +1,182 @@
+/* src/components/Service/HardwareSetup.css */
+
+.hardware-setup {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 2rem 2.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(33, 64, 192, 0.12);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #223399;
+  transition: box-shadow 0.3s ease;
+}
+
+.hardware-setup:hover {
+  box-shadow: 0 15px 45px rgba(33, 64, 192, 0.22);
+}
+
+.hardware-header {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hardware-header h2 {
+  font-size: 1.8rem;       /* slightly bigger headline */
+  font-weight: 900;        /* bolder for emphasis */
+  line-height: 1.15;
+  color: #16266b;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hardware-header .intro-text {
+  font-size: 0.7rem;      /* larger, easier to read */
+  font-weight: 500;
+  color: #3949ab;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  color: #3949ab;
+  line-height: 1.7;
+}
+
+.service-section {
+  background: #f5f8ff;
+  margin-bottom: 3rem;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  border: 1.5px solid #d3dbff;
+  box-shadow: 0 6px 20px rgba(33, 64, 192, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.service-section:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 40px rgba(33, 64, 192, 0.12);
+}
+
+.service-section h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.8rem;
+  text-align: center;
+  color: #1a237e;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.service-section ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.2rem;
+  color: #3949ab;
+  line-height: 1.9;
+}
+
+.service-item {
+  position: relative;
+  padding-left: 2.8rem;
+  margin-bottom: 1.3rem;
+  cursor: default;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  outline-offset: 4px;
+}
+
+.service-item:focus,
+.service-item:hover {
+  background-color: #e7ecff;
+  color: #16266b;
+  outline: none;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #223399;
+  user-select: none;
+}
+
+.hardware-footer {
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a237e;
+  line-height: 1.6;
+}
+
+.contact-button {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, #223399, #0f1f63);
+  color: #fff;
+  border: none;
+  padding: 16px 48px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 36px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(33, 64, 192, 0.35);
+  transition: background 0.3s ease, transform 0.25s ease;
+  user-select: none;
+}
+
+.contact-button:hover,
+.contact-button:focus {
+  background: linear-gradient(135deg, #0f1f63, #223399);
+  transform: scale(1.07);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .hardware-setup {
+    margin: 2rem 1rem;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .hardware-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-section h3 {
+    font-size: 1.6rem;
+  }
+
+  .service-section {
+    padding: 1.5rem 1.8rem;
+  }
+
+  .service-item {
+    font-size: 1.1rem;
+  }
+
+  .hardware-footer {
+    font-size: 1.1rem;
+  }
+
+  .contact-button {
+    padding: 14px 36px;
+    font-size: 1rem;
+  }
+}

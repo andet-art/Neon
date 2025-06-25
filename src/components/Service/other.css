@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.other-section {
+  max-width: 900px;
+  margin: 6rem auto;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #eef2ff 0%, #d1d9ff 100%);
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(58, 68, 160, 0.12);
+  font-family: 'Poppins', sans-serif;
+  color: #1a237e;
+  text-align: center;
+}
+
+.other-header h2 {
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(26, 35, 126, 0.25);
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #3f51b5;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.other-content p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: #283593;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+}
+
+.other-content p:hover {
+  color: #1a237e;
+}
+
+.contact-cta {
+  background: linear-gradient(135deg, #3949ab, #1a237e);
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 36px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(26, 35, 126, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 2.5rem;
+}
+
+.contact-cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(26, 35, 126, 0.45);
+}
