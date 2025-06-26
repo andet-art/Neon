@@ -33,10 +33,7 @@ const Contact: React.FC = () => {
     try {
       let API_BASE = "";
       if (window.location.hostname === "localhost") {
-        if (
-          window.location.port === "9004" ||
-          window.location.port === "5173"
-        ) {
+        if (["5173", "9004"].includes(window.location.port)) {
           API_BASE = "/api";
         } else {
           API_BASE = "http://localhost/Neon/backend/api";
@@ -53,17 +50,18 @@ const Contact: React.FC = () => {
         body: JSON.stringify(form),
       });
 
-      if (!res.ok) {
-        const data = await res.json();
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
         throw new Error(data.error || "Server error");
       }
 
-      const responseData = await res.json();
-      console.log("Response:", responseData);
+      console.log("Contact form response:", data);
       setSubmitted(true);
+      window.alert("✅ Your message has been sent!");
     } catch (err: any) {
-      console.error("Error submitting message:", err);
-      setError(err.message);
+      console.error("Submission error:", err);
+      setError(err.message || "Something went wrong.");
     }
   };
 
@@ -75,36 +73,27 @@ const Contact: React.FC = () => {
         <div className="contact-card">
           {submitted ? (
             <>
-              <div
-                className="contact-alert"
-                style={{
-                  backgroundColor: "#d4edda",
-                  color: "#155724",
-                  padding: "0.75rem 1rem",
-                  borderRadius: "0.25rem",
-                }}
-              >
-                Thank you for your message! We will get back to you soon.
+              <div className="contact-alert" style={{
+                backgroundColor: "#d4edda",
+                color: "#155724",
+                padding: "0.75rem 1rem",
+                borderRadius: "0.25rem"
+              }}>
+                Thank you! We’ll get back to you soon.
               </div>
-              <button
-                onClick={() => navigate("/")}
-                className="contact-button"
-              >
+              <button onClick={() => navigate("/")} className="contact-button">
                 Go to Home
               </button>
             </>
           ) : (
             <form onSubmit={handleSubmit} className="contact-form">
               {error && (
-                <div
-                  className="contact-alert"
-                  style={{
-                    backgroundColor: "#f8d7da",
-                    color: "#721c24",
-                    padding: "0.75rem 1rem",
-                    borderRadius: "0.25rem",
-                  }}
-                >
+                <div className="contact-alert" style={{
+                  backgroundColor: "#f8d7da",
+                  color: "#721c24",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "0.25rem"
+                }}>
                   {error}
                 </div>
               )}
@@ -117,12 +106,6 @@ const Contact: React.FC = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "0.75rem 1rem",
-                  fontSize: "1rem",
-                  borderRadius: "0.5rem",
-                  border: "1px solid #ccc",
-                }}
               />
 
               <input
@@ -133,12 +116,6 @@ const Contact: React.FC = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "0.75rem 1rem",
-                  fontSize: "1rem",
-                  borderRadius: "0.5rem",
-                  border: "1px solid #ccc",
-                }}
               />
 
               <textarea
@@ -149,13 +126,6 @@ const Contact: React.FC = () => {
                 value={form.message}
                 onChange={handleChange}
                 required
-                style={{
-                  padding: "0.75rem 1rem",
-                  fontSize: "1rem",
-                  borderRadius: "0.5rem",
-                  border: "1px solid #ccc",
-                  resize: "vertical",
-                }}
               />
 
               <button type="submit" className="contact-button">
